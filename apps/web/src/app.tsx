@@ -1,6 +1,6 @@
 export function App() {
   return (
-    <div >
+    <div>
       <header>
         <a
           href="https://github.com/solidjs/solid"
@@ -13,4 +13,3 @@ export function App() {
     </div>
   );
 }
-

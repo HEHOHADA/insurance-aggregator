@@ -5,6 +5,7 @@ module.exports = {
   tabWidth: 2,
   semi: true,
   singleQuote: false,
+  bracketSpacing: true,
   importOrder: ["<THIRD_PARTY_MODULES>",  "^[./]"],
   importOrderSeparation: true,
 };

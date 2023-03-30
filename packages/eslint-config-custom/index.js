@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   env: {
     browser: true,
@@ -6,10 +7,10 @@ module.exports = {
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    'plugin:solid/recommended',
+    "plugin:solid/recommended",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "prettier"
+    "prettier",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -39,10 +40,11 @@ module.exports = {
     },
   },
   rules: {
+    "@typescript-eslint/no-floating-promises": "off",
     "check-file/folder-naming-convention": [
       "error",
       {
-        "src/**/": "kebabCase",
+        "src/**/": "KEBAB_CASE",
       },
     ],
     "import/no-named-as-default-member": "off",
@@ -61,15 +63,6 @@ module.exports = {
       },
     ],
     "import/no-duplicates": "warn",
-    "rulesdir/no-storage": "error",
-    "rulesdir/props-name": "error",
-    "rulesdir/ns-naming": [
-      "error",
-      {
-        "src/store/slices/": "Slice",
-        "src/models/": "Model",
-      },
-    ],
     "@typescript-eslint/adjacent-overload-signatures": "error",
     "@typescript-eslint/array-type": [
       "error",

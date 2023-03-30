@@ -13,14 +13,16 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production node esbuild.config.js",
-    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only src/index.ts"
+    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only src/index.ts",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
   "devDependencies": {
     "typescript": "^5.0.2",
     "@types/node": "^18.15.11",
     "esbuild": "^0.17.14",
     "cross-env": "^7.0.3",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "tsconfig": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

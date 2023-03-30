@@ -30,7 +30,7 @@ fastify.register(cookie, {
 });
 
 fastify.get("/status", async (req, res) => {
-  res.code(200).send({message: "Ok"});
+  res.code(200).send({ message: "Ok" });
 });
 
 const start = async () => {
@@ -40,9 +40,9 @@ const start = async () => {
       host,
     });
   } catch (err) {
-    fastify.log.error(err)
-    process.exit(1)
+    fastify.log.error(err);
+    process.exit(1);
   }
-}
+};
 
-start()
+start();
