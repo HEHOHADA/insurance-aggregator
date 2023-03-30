@@ -6,10 +6,10 @@ module.exports = {
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    'plugin:solid/recommended',
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "prettier",
-    "plugin:react-hooks/recommended",
+    "prettier"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     "eslint-plugin-jsdoc",
     "eslint-plugin-prefer-arrow",
-    // "eslint-plugin-react",
+    "eslint-plugin-solid",
     "import",
     "unicorn",
     "check-file",
@@ -46,7 +46,6 @@ module.exports = {
       },
     ],
     "import/no-named-as-default-member": "off",
-    // "react/jsx-uses-react": "off",
     "@typescript-eslint/no-unsafe-return": "warn",
     "import/no-named-as-default": "off",
     "unicorn/filename-case": [
@@ -62,8 +61,6 @@ module.exports = {
       },
     ],
     "import/no-duplicates": "warn",
-    // "react/jsx-curly-brace-presence": ["warn", "never"],
-    // "react/react-in-jsx-scope": "off",
     "rulesdir/no-storage": "error",
     "rulesdir/props-name": "error",
     "rulesdir/ns-naming": [
@@ -264,16 +261,6 @@ module.exports = {
     "quote-props": "off",
     quotes: "off",
     radix: "error",
-    // "react/jsx-curly-spacing": "off",
-    // "react/jsx-equals-spacing": "off",
-    // "react/jsx-tag-spacing": [
-    //   "off",
-    //   {
-    //     afterOpening: "allow",
-    //     closingSlash: "allow",
-    //   },
-    // ],
-    // "react/jsx-wrap-multilines": "off",
     semi: "off",
     "space-before-function-paren": "off",
     "space-in-parens": ["off", "never"],
@@ -328,9 +315,6 @@ module.exports = {
     "@typescript-eslint/no-unsafe-call": "warn",
     "@typescript-eslint/no-unsafe-argument": "warn",
     "@typescript-eslint/unbound-method": "off",
-    // "react/jsx-key": "error",
-    // "react/display-name": "warn",
-    // "react/no-direct-mutation-state": "error",
     "@typescript-eslint/restrict-template-expressions": "warn",
     "@typescript-eslint/no-unnecessary-type-assertion": "warn",
   },

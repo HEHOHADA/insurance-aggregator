@@ -16,6 +16,8 @@
     "tailwindcss": "^3.2.4",
     "vite-plugin-solid": "^2.5.0",
     "tsconfig": "workspace:*",
+    "eslint-config-custom": "workspace:*",
+    "prettier-config-custom": "workspace:*",
     "typescript": "^5.0.2"
   },
   "dependencies": {
