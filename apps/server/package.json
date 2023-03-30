@@ -1,8 +1,8 @@
 {
-  "name": "sercer",
+  "name": "server",
   "version": "0.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "main": "./src/index.ts",
   "dependencies": {
     "@fastify/cookie": "^8.3.0",
     "@fastify/cors": "^8.2.1",
@@ -11,9 +11,16 @@
     "fastify": "^4.15.0",
     "prettier-config-custom": "workspace:*"
   },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production node esbuild.config.js",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only src/index.ts"
+  },
   "devDependencies": {
     "typescript": "^5.0.2",
-    "@types/node": "^18.15.11"
+    "@types/node": "^18.15.11",
+    "esbuild": "^0.17.14",
+    "cross-env": "^7.0.3",
+    "ts-node-dev": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"
