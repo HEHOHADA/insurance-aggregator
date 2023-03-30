@@ -1,0 +1,16 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint *.ts*"
+  },
+  "devDependencies": {
+    "eslint-config-custom": "workspace:*",
+    "prettier-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.0.2"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "sercer",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/cookie": "^8.3.0",
+    "@fastify/cors": "^8.2.1",
+    "dotenv": "^16.0.3",
+    "eslint-config-custom": "workspace:*",
+    "fastify": "^4.15.0",
+    "prettier-config-custom": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "@types/node": "^18.15.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
