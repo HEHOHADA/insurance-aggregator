@@ -14,6 +14,33 @@ importers:
       prettier: 2.8.7
       turbo: 1.8.8
 
+  apps/admin:
+    specifiers:
+      autoprefixer: ^10.4.13
+      daisyui: ^2.51.5
+      eslint-config-custom: workspace:*
+      postcss: ^8.4.21
+      prettier-config-custom: workspace:*
+      solid-js: ^1.6.10
+      tailwindcss: ^3.2.4
+      tsconfig: workspace:*
+      typescript: ^5.0.2
+      vite: ^4.1.1
+      vite-plugin-solid: ^2.5.0
+    dependencies:
+      daisyui: 2.51.5_j7yt3jd32cwenjqavrrga47yr4
+      solid-js: 1.7.0
+    devDependencies:
+      autoprefixer: 10.4.14_postcss@8.4.21
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      postcss: 8.4.21
+      prettier-config-custom: link:../../packages/prettier-config-custom
+      tailwindcss: 3.3.0_postcss@8.4.21
+      tsconfig: link:../../packages/tsconfig
+      typescript: 5.0.2
+      vite: 4.2.1
+      vite-plugin-solid: 2.6.1_solid-js@1.7.0+vite@4.2.1
+
   apps/server:
     specifiers:
       '@fastify/cookie': ^8.3.0

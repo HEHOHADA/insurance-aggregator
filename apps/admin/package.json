@@ -1,0 +1,28 @@
+{
+  "name": "admin",
+  "version": "0.0.0",
+  "description": "Admin application of insurance agreggator",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^4.1.1",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
+    "vite-plugin-solid": "^2.5.0",
+    "tsconfig": "workspace:*",
+    "eslint-config-custom": "workspace:*",
+    "prettier-config-custom": "workspace:*",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "solid-js": "^1.6.10",
+    "daisyui": "^2.51.5"
+  }
+}
