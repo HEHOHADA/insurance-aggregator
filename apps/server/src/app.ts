@@ -13,7 +13,6 @@ async function buildApp(_options: AppOptions = {}) {
   });
 
   fastify.register(prismaPlugin);
-  //#region fastify plugins
 
   fastify.register(cors, {
     origin: ["http://localhost:3000", "http://localhost:4000"],
