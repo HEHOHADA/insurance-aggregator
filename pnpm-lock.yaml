@@ -18,27 +18,33 @@ importers:
     specifiers:
       '@fastify/cookie': ^8.3.0
       '@fastify/cors': ^8.2.1
+      '@prisma/client': ^4.12.0
       '@types/node': ^18.15.11
       cross-env: ^7.0.3
       dotenv: ^16.0.3
       esbuild: ^0.17.14
       eslint-config-custom: workspace:*
       fastify: ^4.15.0
+      fastify-plugin: ^4.5.0
       prettier-config-custom: workspace:*
+      prismjs: ^1.29.0
       ts-node-dev: ^2.0.0
       tsconfig: workspace:*
       typescript: ^5.0.2
     dependencies:
       '@fastify/cookie': 8.3.0
       '@fastify/cors': 8.2.1
+      '@prisma/client': 4.12.0
       dotenv: 16.0.3
-      eslint-config-custom: link:../../packages/eslint-config-custom
       fastify: 4.15.0
-      prettier-config-custom: link:../../packages/prettier-config-custom
+      fastify-plugin: 4.5.0
+      prismjs: 1.29.0
     devDependencies:
       '@types/node': 18.15.11
       cross-env: 7.0.3
       esbuild: 0.17.14
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      prettier-config-custom: link:../../packages/prettier-config-custom
       ts-node-dev: 2.0.0_qj46uwwzcluhgvra3n2zhrviru
       tsconfig: link:../../packages/tsconfig
       typescript: 5.0.2
@@ -842,6 +848,23 @@ packages:
       picocolors: 1.0.0
       tiny-glob: 0.2.9
       tslib: 2.5.0
+    dev: false
+
+  /@prisma/client/4.12.0:
+    resolution: {integrity: sha512-j9/ighfWwux97J2dS15nqhl60tYoH8V0IuSsgZDb6bCFcQD3fXbXmxjYC8GHhIgOk3lB7Pq+8CwElz2MiDpsSg==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.12.0-67.659ef412370fa3b41cd7bf6e94587c1dfb7f67e7
+    dev: false
+
+  /@prisma/engines-version/4.12.0-67.659ef412370fa3b41cd7bf6e94587c1dfb7f67e7:
+    resolution: {integrity: sha512-JIHNj5jlXb9mcaJwakM0vpgRYJIAurxTUqM0iX0tfEQA5XLZ9ONkIckkhuAKdAzocZ+80GYg7QSsfpjg7OxbOA==}
     dev: false
 
   /@trivago/prettier-plugin-sort-imports/4.1.1_prettier@2.8.7:
@@ -3096,6 +3119,11 @@ packages:
     resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+
+  /prismjs/1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
+    dev: false
 
   /process-warning/2.1.0:
     resolution: {integrity: sha512-9C20RLxrZU/rFnxWncDkuF6O999NdIf3E1ws4B0ZeY3sRVPzWBMsYDE2lxjxhiXxg464cQTgKUGm8/i6y2YGXg==}
