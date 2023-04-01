@@ -1,7 +1,7 @@
 {
   "name": "admin",
   "version": "0.0.0",
-  "description": "Admin application of insurance agreggator",
+  "description": "Admin application of insurance aggregator",
   "scripts": {
     "start": "vite",
     "dev": "vite",

@@ -1,5 +1,5 @@
 {
-  "name": "insurance-agreggator",
+  "name": "insurance-aggregator",
   "version": "0.0.0",
   "private": true,
   "workspaces": [

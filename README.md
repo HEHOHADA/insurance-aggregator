@@ -1,4 +1,4 @@
-# insurance-agreggator
+# insurance-aggregator
 
 - `web`: web app
 - `ui`: a stub component library shared to applications
@@ -19,7 +19,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 To build all apps and packages, run the following command:
 
 ```
-cd insurance-agreggator
+cd insurance-aggregator
 pnpm run build
 ```
 
@@ -28,6 +28,6 @@ pnpm run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd insurance-aggregator
 pnpm run dev
 ```
