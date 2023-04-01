@@ -1,15 +1,12 @@
 import { initDatabaseConnection } from "server-libs";
-import { handlerConfig } from "../lib";
+import { handlerConfig } from "../../lib";
 
 const handler = async (): Promise<void> => {
+  const prisma = initDatabaseConnection();
+
   try {
-    const prisma = await initDatabaseConnection();
     const now = new Date();
-    const dateStart = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate() + 1
-    );
+    const dateStart = now.toISOString().split("T")[0]
     const currentParams = {
       ...handlerConfig.cherepaha.params,
       dateStart,
@@ -29,7 +26,7 @@ const handler = async (): Promise<void> => {
         currency: data.currency,
         companyId: data.companyId,
         startDate: dateStart,
-        endDate: new Date(dateStart.getTime() + 7 * 24 * 60 * 60 * 1000),
+        endDate: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
         createdAt: now,
         approved: false,
         destination: data.destination,
@@ -39,6 +36,8 @@ const handler = async (): Promise<void> => {
   } catch (e) {
     console.error(e);
   }
+
+  prisma.$disconnect();
 };
 
-export default handler;
+export const main = handler;

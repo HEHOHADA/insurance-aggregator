@@ -2,7 +2,6 @@
   "name": "serverless",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "./src/index.ts",
   "dependencies": {
     "prismjs": "^1.29.0",
     "@prisma/client": "^4.12.0",
@@ -13,9 +12,11 @@
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
     "seed": "prisma migrate reset -f",
-    "build": "tsc",
-    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only src/index.ts",
-    "lint": "eslint \"src/**/*.{ts,tsx}\""
+    "build": "cross-env NODE_ENV=production node esbuild.config.js",
+    "dev": "serverless offline start",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "deploy:staging": "serverless deploy --stage staging",
+    "deploy:production": "serverless deploy --aws-profile $AWS_PROFILE --stage production"
   },
   "prisma": {
     "seed": "node -r @swc-node/register prisma/seed.ts"

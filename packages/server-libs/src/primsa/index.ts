@@ -1,8 +1,7 @@
-import { PrismaClient } from "database";
+import {PrismaClient} from "database";
 
-export async function initDatabaseConnection(): Promise<PrismaClient> {
+export function initDatabaseConnection(): PrismaClient {
   const db = new PrismaClient();
-  await db.$connect();
 
   return db;
 }
