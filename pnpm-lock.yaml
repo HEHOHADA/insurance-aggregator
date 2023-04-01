@@ -55,6 +55,7 @@ importers:
       fastify-plugin: ^4.5.0
       prettier-config-custom: workspace:*
       prismjs: ^1.29.0
+      server-libs: workspace:*
       ts-node-dev: ^2.0.0
       tsconfig: workspace:*
       typescript: ^5.0.2
@@ -66,6 +67,7 @@ importers:
       fastify: 4.15.0
       fastify-plugin: 4.5.0
       prismjs: 1.29.0
+      server-libs: link:../../packages/server-libs
     devDependencies:
       '@types/node': 18.15.11
       cross-env: 7.0.3
@@ -85,12 +87,16 @@ importers:
       eslint-config-custom: workspace:*
       prettier-config-custom: workspace:*
       prismjs: ^1.29.0
+      server-libs: workspace:*
       ts-node-dev: ^2.0.0
       tsconfig: workspace:*
       typescript: ^5.0.2
+      uuid: ^9.0.0
     dependencies:
       '@prisma/client': 4.12.0
       prismjs: 1.29.0
+      server-libs: link:../../packages/server-libs
+      uuid: 9.0.0
     devDependencies:
       '@types/node': 18.15.11
       cross-env: 7.0.3
@@ -166,6 +172,17 @@ importers:
       '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.7
       prettier: 2.8.7
       prettier-plugin-packagejson: 2.4.3_prettier@2.8.7
+
+  packages/server-libs:
+    specifiers:
+      '@prisma/client': ^4.12.0
+      prismjs: ^1.29.0
+      typescript: ^5.0.2
+    dependencies:
+      '@prisma/client': 4.12.0
+      prismjs: 1.29.0
+    devDependencies:
+      typescript: 5.0.2
 
   packages/tsconfig:
     specifiers: {}
@@ -3918,6 +3935,11 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: false
 
   /v8-compile-cache-lib/3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}

@@ -5,13 +5,15 @@
   "main": "./src/index.ts",
   "dependencies": {
     "prismjs": "^1.29.0",
-    "@prisma/client": "^4.12.0"
+    "@prisma/client": "^4.12.0",
+    "server-libs": "workspace:*",
+    "uuid": "^9.0.0"
   },
   "scripts": {
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
     "seed": "prisma migrate reset -f",
-    "build": "cross-env NODE_ENV=production node esbuild.config.js",
+    "build": "tsc",
     "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only src/index.ts",
     "lint": "eslint \"src/**/*.{ts,tsx}\""
   },

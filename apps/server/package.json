@@ -10,12 +10,13 @@
     "fastify": "^4.15.0",
     "prismjs": "^1.29.0",
     "fastify-plugin": "^4.5.0",
-    "@prisma/client": "^4.12.0"
+    "@prisma/client": "^4.12.0",
+    "server-libs": "workspace:*"
   },
   "scripts": {
-    "generate": "prisma generate",
-    "migrate": "prisma migrate dev",
-    "seed": "prisma migrate reset -f",
+    "generate": "npx prisma generate",
+    "migrate": "npx prisma migrate dev",
+    "seed": "npx prisma migrate reset -f",
     "build": "cross-env NODE_ENV=production node esbuild.config.js",
     "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only src/index.ts",
     "lint": "eslint \"src/**/*.{ts,tsx}\""

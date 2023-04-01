@@ -21,8 +21,8 @@ layers:
     path: lambda-layers-prisma-client
 
 functions:
-  insertUserCron:
-    handler: insertUser/handler.default
+  getTravelCrin:
+    handler: handler.default
     memorySize: 512
     timeout: 290 # 4 minutes 50 seconds
     events:

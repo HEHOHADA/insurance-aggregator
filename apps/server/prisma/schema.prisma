@@ -3,9 +3,32 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../../../packages/prisma-client/"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Travel {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  url       String
+  destination String
+  startDate  DateTime
+  endDate    DateTime
+  price      Int
+  currency   String
+  companyId  Int
+  approved   Boolean  @default(false)
+}
+
+model Company {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  url       String
+  logoUrl   String
+  colorHexCode String
 }
