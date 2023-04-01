@@ -1,0 +1,34 @@
+{
+  "name": "serverless",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "dependencies": {
+    "prismjs": "^1.29.0",
+    "@prisma/client": "^4.12.0"
+  },
+  "scripts": {
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev",
+    "seed": "prisma migrate reset -f",
+    "build": "cross-env NODE_ENV=production node esbuild.config.js",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only src/index.ts",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
+  },
+  "prisma": {
+    "seed": "node -r @swc-node/register prisma/seed.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "@types/node": "^18.15.11",
+    "esbuild": "^0.17.14",
+    "prettier-config-custom": "workspace:*",
+    "eslint-config-custom": "workspace:*",
+    "cross-env": "^7.0.3",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
