@@ -1,0 +1,19 @@
+{
+  "name": "database",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "browser": "index-browser.js",
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push --skip-generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.12.0",
+    "prisma": "^4.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.0.2"
+  }
+}

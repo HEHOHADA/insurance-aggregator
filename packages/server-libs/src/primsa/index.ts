@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "database";
 
 export async function initDatabaseConnection(): Promise<PrismaClient> {
   const db = new PrismaClient();
