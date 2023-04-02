@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Travel {
+  id        String      @id @default(uuid())
+  createdAt DateTime @default(now())
+  url       String
+  destination String
+  startDate  DateTime
+  endDate    DateTime
+  price      Float
+  currency   String
+  companyId  Int
+  approved   Boolean  @default(false)
+}
+
+model Company {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  url       String
+  logoUrl   String
+  colorHexCode String
+}

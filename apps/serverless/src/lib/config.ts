@@ -1,3 +1,47 @@
+export type CherepahaResponse = {
+  calculations: {
+    productId: number;
+    companyId: number;
+    price: number;
+    priceRub: number;
+    assistances: {
+      code: string;
+      name: string;
+    }[];
+    matchRating: number;
+    matchDetails: {
+      totalServices: number;
+      additionalServices: number;
+      missingServices: number;
+      matchingServices: number;
+      higherSumms: number;
+      lowerSumms: number;
+      priceRating: number;
+      payoutRating: number;
+    };
+    serviceProduct: {
+      abroad: number;
+      abroadTransportation: number;
+      accident: number;
+      alcoholAssistance: number;
+      allergyArresting: number;
+      ambulatoryCare: number;
+      aviaCargo: number;
+      childrenReturn: number;
+      chronicArresting: number;
+      civilLiability: number;
+      covid: number;
+      deathRepatriation: number;
+      denge: number;
+      disasterAssistance: number;
+      doctorCall: number;
+    };
+    info: {
+      medicina: any;
+    } | null;
+  }[];
+};
+
 export const handlerConfig = {
   cherepaha: {
     url: "https://www.cherehapa.ru/api/travel/calculate",

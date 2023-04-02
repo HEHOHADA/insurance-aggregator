@@ -3,20 +3,21 @@
   "version": "0.0.0",
   "license": "MIT",
   "dependencies": {
-    "prismjs": "^1.29.0",
-    "@prisma/client": "^4.12.0",
     "server-libs": "workspace:*",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "@middy/core": "^4.2.8",
+    "@middy/http-json-body-parser": "^4.2.8",
+    "aws-lambda": "^1.0.7"
   },
   "scripts": {
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
     "seed": "prisma migrate reset -f",
     "build": "cross-env NODE_ENV=production node esbuild.config.js",
-    "dev": "serverless offline start",
+    "dev": "cross-env NODE_ENV=development serverless offline start",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "deploy:staging": "serverless deploy --stage staging",
-    "deploy:production": "serverless deploy --aws-profile $AWS_PROFILE --stage production"
+    "deploy:staging": "cross-env NODE_ENV=production serverless deploy",
+    "deploy:production": "cross-env NODE_ENV=production serverless deploy --aws-profile $AWS_PROFILE --stage production"
   },
   "prisma": {
     "seed": "node -r @swc-node/register prisma/seed.ts"
@@ -24,12 +25,18 @@
   "devDependencies": {
     "typescript": "^5.0.2",
     "@types/node": "^18.15.11",
-    "esbuild": "^0.17.14",
     "prettier-config-custom": "workspace:*",
     "eslint-config-custom": "workspace:*",
     "cross-env": "^7.0.3",
     "ts-node-dev": "^2.0.0",
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "@serverless/typescript": "^3.29.0",
+    "@types/aws-lambda": "^8.10.114",
+    "serverless": "^3.29.0",
+    "serverless-esbuild": "^1.43.0",
+    "serverless-offline": "^12.0.4",
+    "esbuild": "^0.17.14",
+    "dotenv": "^16.0.3"
   },
   "publishConfig": {
     "access": "public"

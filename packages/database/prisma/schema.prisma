@@ -12,13 +12,13 @@ datasource db {
 }
 
 model Travel {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(uuid())
   createdAt DateTime @default(now())
   url       String
   destination String
   startDate  DateTime
   endDate    DateTime
-  price      Int
+  price      Float
   currency   String
   companyId  Int
   approved   Boolean  @default(false)

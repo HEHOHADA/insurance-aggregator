@@ -4,29 +4,14 @@ importers:
 
   .:
     specifiers:
-      '@serverless/typescript': ^3.29.0
-      '@types/aws-lambda': ^8.10.114
       '@types/node': ^18.15.11
-      aws-lambda: ^1.0.7
-      esbuild: ^0.17.14
       eslint-config-custom: workspace:*
       prettier: latest
-      serverless: ^3.29.0
-      serverless-esbuild: ^1.43.0
-      serverless-offline: ^12.0.4
       turbo: latest
-    dependencies:
-      aws-lambda: 1.0.7
     devDependencies:
-      '@serverless/typescript': 3.29.0
-      '@types/aws-lambda': 8.10.114
       '@types/node': 18.15.11
-      esbuild: 0.17.14
       eslint-config-custom: link:packages/eslint-config-custom
       prettier: 2.8.7
-      serverless: 3.29.0
-      serverless-esbuild: 1.43.0_esbuild@0.17.14
-      serverless-offline: 12.0.4_serverless@3.29.0
       turbo: 1.8.8
 
   apps/admin:
@@ -95,29 +80,43 @@ importers:
 
   apps/serverless:
     specifiers:
-      '@prisma/client': ^4.12.0
+      '@middy/core': ^4.2.8
+      '@middy/http-json-body-parser': ^4.2.8
+      '@serverless/typescript': ^3.29.0
+      '@types/aws-lambda': ^8.10.114
       '@types/node': ^18.15.11
+      aws-lambda: ^1.0.7
       cross-env: ^7.0.3
+      dotenv: ^16.0.3
       esbuild: ^0.17.14
       eslint-config-custom: workspace:*
       prettier-config-custom: workspace:*
-      prismjs: ^1.29.0
       server-libs: workspace:*
+      serverless: ^3.29.0
+      serverless-esbuild: ^1.43.0
+      serverless-offline: ^12.0.4
       ts-node-dev: ^2.0.0
       tsconfig: workspace:*
       typescript: ^5.0.2
       uuid: ^9.0.0
     dependencies:
-      '@prisma/client': 4.12.0
-      prismjs: 1.29.0
+      '@middy/core': 4.2.8
+      '@middy/http-json-body-parser': 4.2.8
+      aws-lambda: 1.0.7
       server-libs: link:../../packages/server-libs
       uuid: 9.0.0
     devDependencies:
+      '@serverless/typescript': 3.29.0
+      '@types/aws-lambda': 8.10.114
       '@types/node': 18.15.11
       cross-env: 7.0.3
+      dotenv: 16.0.3
       esbuild: 0.17.14
       eslint-config-custom: link:../../packages/eslint-config-custom
       prettier-config-custom: link:../../packages/prettier-config-custom
+      serverless: 3.29.0
+      serverless-esbuild: 1.43.0_esbuild@0.17.14
+      serverless-offline: 12.0.4_serverless@3.29.0
       ts-node-dev: 2.0.0_qj46uwwzcluhgvra3n2zhrviru
       tsconfig: link:../../packages/tsconfig
       typescript: 5.0.2
@@ -1888,6 +1887,23 @@ packages:
   /@kwsites/promise-deferred/1.1.1:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
     dev: true
+
+  /@middy/core/4.2.8:
+    resolution: {integrity: sha512-cz3nec4THgolPk3iK4JCxzXSJXudm0QlUFNRYl8JpcdY1vYSnlPuDZo6aKEFbh8+A5gBs04cGwMcnH/GTtNX6w==}
+    engines: {node: '>=16'}
+    dev: false
+
+  /@middy/http-json-body-parser/4.2.8:
+    resolution: {integrity: sha512-LBmz9CQEV2/KtT18LNQi/rwRX1+pHRlRslkPzdJfNmOTOyaqk5znSjHZ8dxQdDws2IHe3YWdqgO9R8mBvP98tQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@middy/util': 4.2.8
+    dev: false
+
+  /@middy/util/4.2.8:
+    resolution: {integrity: sha512-gnL4bEWTRpIiPHPgxCNnxYQ6x4IAPWxUklEwN7VPnUKyzG10P3Nt0QVfbHZeEtA/SxBC9jwK8h/zaOvN0kvyCA==}
+    engines: {node: '>=16'}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
