@@ -1,1 +1,1 @@
-console.log("a");
+export * from "./components";

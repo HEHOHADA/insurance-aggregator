@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "solid-js": "^1.6.10",
-    "daisyui": "^2.51.5"
+    "daisyui": "^2.51.5",
+    "ui": "workspace:*",
+    "config": "workspace:*"
   }
 }

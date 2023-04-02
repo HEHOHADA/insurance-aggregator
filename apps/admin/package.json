@@ -11,18 +11,25 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "vite": "^4.1.1",
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.4",
-    "vite-plugin-solid": "^2.5.0",
-    "tsconfig": "workspace:*",
+    "config": "workspace:*",
     "eslint-config-custom": "workspace:*",
+    "postcss": "^8.4.21",
     "prettier-config-custom": "workspace:*",
-    "typescript": "^5.0.2"
+    "tailwindcss": "^3.2.4",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.0.2",
+    "vite": "^4.1.1",
+    "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
+    "atomic-router": "^0.8.0",
+    "atomic-router-solid": "^0.8.0",
+    "daisyui": "^2.51.5",
+    "effector": "^22.7.0",
+    "effector-solid": "^0.22.7",
+    "history": "^5.3.0",
     "solid-js": "^1.6.10",
-    "daisyui": "^2.51.5"
+    "ui": "workspace:*"
   }
 }
