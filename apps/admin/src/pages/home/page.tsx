@@ -2,6 +2,7 @@ import { Link } from "atomic-router-solid";
 import { useUnit } from "effector-solid";
 
 import * as model from "./model";
+import { Button } from "ui";
 
 export function HomePage() {
   const isLoggedIn = useUnit(model.$loggedIn);
@@ -27,13 +28,13 @@ function RegisterForm() {
 
   return (
     <div class="border-t-2 border-solid border-black bg-white p-4">
-      <div>Please, register in to be able to send messages</div>
-      <button
+      <div>Please sign in </div>
+      <Button
         class="cursor-pointer py-2 px-4 mr-4 border-0 select-none outline-none text-white bg-gray-800 rounded"
         onClick={handleLogin}
       >
         Register as a random user
-      </button>
+      </Button>
     </div>
   );
 }

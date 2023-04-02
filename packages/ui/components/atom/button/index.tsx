@@ -1,9 +1,9 @@
-import type { JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import clsx from "clsx";
 
 export type ButtonProps = JSX.HTMLAttributes<HTMLButtonElement>;
 
-export const Button = (props: ButtonProps) => {
+export const Button: Component<ButtonProps> = (props) => {
   const { class: className, ...otherProps } = props;
 
   return (
