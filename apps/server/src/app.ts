@@ -4,6 +4,7 @@ import cors from "@fastify/cors";
 import cookie from "@fastify/cookie";
 
 import { prismaPlugin } from "./db";
+import { travelRoutes } from "./services";
 
 export type AppOptions = Partial<FastifyServerOptions>;
 
@@ -15,7 +16,7 @@ async function buildApp(_options: AppOptions = {}) {
   fastify.register(prismaPlugin);
 
   fastify.register(cors, {
-    origin: ["http://localhost:3000", "http://localhost:4000"],
+    origin: ["http://localhost:3000", "http://localhost:3004"],
     credentials: true,
   });
 
@@ -26,6 +27,8 @@ async function buildApp(_options: AppOptions = {}) {
   fastify.get("/status", async (req, res) => {
     res.code(200).send({ message: "Ok" });
   });
+
+  fastify.register(travelRoutes);
 
   return fastify;
 }

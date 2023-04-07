@@ -1,3 +1,5 @@
+import type { ServiceProduct } from "database";
+
 export type CherepahaResponse = {
   calculations: {
     productId: number;
@@ -19,23 +21,7 @@ export type CherepahaResponse = {
       priceRating: number;
       payoutRating: number;
     };
-    serviceProduct: {
-      abroad: number;
-      abroadTransportation: number;
-      accident: number;
-      alcoholAssistance: number;
-      allergyArresting: number;
-      ambulatoryCare: number;
-      aviaCargo: number;
-      childrenReturn: number;
-      chronicArresting: number;
-      civilLiability: number;
-      covid: number;
-      deathRepatriation: number;
-      denge: number;
-      disasterAssistance: number;
-      doctorCall: number;
-    };
+    serviceProduct: Omit<ServiceProduct, "id">;
     info: {
       medicina: any;
     } | null;

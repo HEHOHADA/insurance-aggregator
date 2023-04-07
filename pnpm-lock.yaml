@@ -34,6 +34,7 @@ importers:
       ui: workspace:*
       vite: ^4.1.1
       vite-plugin-solid: ^2.5.0
+      vite-tsconfig-paths: ^4.0.8
     dependencies:
       atomic-router: 0.8.0_iyoe6piwsnvsagwydbbzyadpym
       atomic-router-solid: 0.8.0_svb3tzfpzumfqpwa2f6rclgzai
@@ -54,6 +55,7 @@ importers:
       typescript: 5.0.2
       vite: 4.2.1
       vite-plugin-solid: 2.6.1_solid-js@1.7.0+vite@4.2.1
+      vite-tsconfig-paths: 4.0.8_bi7wsi5xkno72wnymskyicz4pu
 
   apps/server:
     specifiers:
@@ -62,6 +64,7 @@ importers:
       '@prisma/client': ^4.12.0
       '@types/node': ^18.15.11
       cross-env: ^7.0.3
+      database: workspace:*
       dotenv: ^16.0.3
       esbuild: ^0.17.14
       eslint-config-custom: workspace:*
@@ -77,6 +80,7 @@ importers:
       '@fastify/cookie': 8.3.0
       '@fastify/cors': 8.2.1
       '@prisma/client': 4.12.0
+      database: link:../../packages/database
       dotenv: 16.0.3
       fastify: 4.15.0
       fastify-plugin: 4.5.0
@@ -101,6 +105,7 @@ importers:
       '@types/node': ^18.15.11
       aws-lambda: ^1.0.7
       cross-env: ^7.0.3
+      database: workspace:*
       dotenv: ^16.0.3
       esbuild: ^0.17.14
       eslint-config-custom: workspace:*
@@ -124,6 +129,7 @@ importers:
       '@types/aws-lambda': 8.10.114
       '@types/node': 18.15.11
       cross-env: 7.0.3
+      database: link:../../packages/database
       dotenv: 16.0.3
       esbuild: 0.17.14
       eslint-config-custom: link:../../packages/eslint-config-custom
@@ -150,6 +156,7 @@ importers:
       ui: workspace:*
       vite: ^4.1.1
       vite-plugin-solid: ^2.5.0
+      vite-tsconfig-paths: ^4.0.8
     dependencies:
       config: link:../../packages/config
       daisyui: 2.51.5_j7yt3jd32cwenjqavrrga47yr4
@@ -165,6 +172,7 @@ importers:
       typescript: 5.0.2
       vite: 4.2.1
       vite-plugin-solid: 2.6.1_solid-js@1.7.0+vite@4.2.1
+      vite-tsconfig-paths: 4.0.8_bi7wsi5xkno72wnymskyicz4pu
 
   packages/config:
     specifiers: {}
@@ -4604,7 +4612,6 @@ packages:
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
-    dev: false
 
   /gopd/1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -7334,6 +7341,19 @@ packages:
       yn: 3.1.1
     dev: true
 
+  /tsconfck/2.1.1_typescript@5.0.2:
+    resolution: {integrity: sha512-ZPCkJBKASZBmBUNqGHmRhdhM8pJYDdOXp4nRgj/O0JwUwsMq50lCDRQP/M5GBNAA0elPrq4gAeu4dkaVCuKWww==}
+    engines: {node: ^14.13.1 || ^16 || >=18}
+    hasBin: true
+    peerDependencies:
+      typescript: ^4.3.5 || ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.0.2
+    dev: true
+
   /tsconfig-paths/3.14.2:
     resolution: {integrity: sha512-o/9iXgCYc5L/JxCHPe3Hvh8Q/2xm5Z+p18PESBU6Ff33695QnCHBEjcytY2q19ua7Mbl/DavtBOLq+oG0RCL+g==}
     dependencies:
@@ -7611,6 +7631,23 @@ packages:
       vitefu: 0.2.4_vite@4.2.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vite-tsconfig-paths/4.0.8_bi7wsi5xkno72wnymskyicz4pu:
+    resolution: {integrity: sha512-p04zH+Ey+NT78571x0pdX7nVRIJSlmKVvYryFglSWOK3Hc72eDL0+JJfbyQiugaIBApJkaEqbBQvqpsFZOSVGg==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 2.1.1_typescript@5.0.2
+      vite: 4.2.1
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /vite/4.2.1:

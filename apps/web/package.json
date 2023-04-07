@@ -19,7 +19,8 @@
     "tsconfig": "workspace:*",
     "eslint-config-custom": "workspace:*",
     "prettier-config-custom": "workspace:*",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "vite-tsconfig-paths": "^4.0.8"
   },
   "dependencies": {
     "solid-js": "^1.6.10",

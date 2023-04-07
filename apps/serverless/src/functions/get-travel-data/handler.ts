@@ -26,12 +26,16 @@ const handler: SQSHandler = async () => {
 
     await Promise.all(
       data.calculations.map(async (calculation) => {
-        console.log("data.calculations.forEach", calculation.info);
+        console.log("data.calculations.forEach", calculation.serviceProduct);
         await prisma.travel.create({
           data: {
             price: calculation.priceRub,
             currency: "RUB",
-            companyId: calculation.companyId,
+            company: {
+              connect: {
+                id: calculation.companyId,
+              },
+            },
             startDate: new Date(dateStart),
             endDate: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000),
             createdAt: now,
@@ -41,6 +45,16 @@ const handler: SQSHandler = async () => {
               calculation.companyId in handlerConfig.cherepaha.companies
                 ? handlerConfig.cherepaha.companies[calculation.companyId].url
                 : "unknown",
+            serviceProduct: {
+              connectOrCreate: {
+                where: {
+                  id: "",
+                },
+                create: {
+                  ...calculation.serviceProduct,
+                },
+              },
+            },
           },
         });
       })

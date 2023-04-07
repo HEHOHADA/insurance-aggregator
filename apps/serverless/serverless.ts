@@ -34,6 +34,9 @@ const serverlessConfiguration: AWS = {
     ],
   },
   custom: {
+    ["serverless-offline"]: {
+      httpPort: 5000,
+    },
     esbuild: {
       bundle: true,
       minify: true,

@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-1.0.x"]
 }
 
@@ -12,23 +12,68 @@ datasource db {
 }
 
 model Travel {
-  id        String      @id @default(uuid())
-  createdAt DateTime @default(now())
-  url       String
-  destination String
-  startDate  DateTime
-  endDate    DateTime
-  price      Float
-  currency   String
-  companyId  Int
-  approved   Boolean  @default(false)
+  id               String         @id @default(uuid()) @db.Uuid
+  createdAt        DateTime       @default(now())
+  url              String
+  destination      String
+  startDate        DateTime
+  endDate          DateTime
+  price            Float
+  currency         String
+  companyId        Int
+  company          Company        @relation(fields: [companyId], references: [id])
+  approved         Boolean        @default(false)
+  serviceProduct   ServiceProduct @relation(fields: [serviceProductId], references: [id])
+  serviceProductId String         @db.Uuid @unique
 }
 
 model Company {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  name      String
-  url       String
-  logoUrl   String
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  name         String
+  url          String
+  logoUrl      String
   colorHexCode String
+  Travel       Travel[]
+}
+
+model ServiceProduct {
+  id                       String   @id @default(uuid()) @db.Uuid
+  Travel                   Travel[]
+  abroad                   Int
+  abroadTransportation     Int
+  accident                 Int
+  allergyArresting         Int
+  ambulatoryCare           Int
+  auto                     Int
+  aviaCargo                Int
+  childrenReturn           Int
+  chronicArresting         Int
+  civilLiability           Int
+  covid                    Int?
+  deathRepatriation        Int
+  delayCargo               Int
+  denge                    Int
+  divingChamber            Int
+  doctorCall               Int
+  doctorTransportation     Int
+  drugRefund               Int
+  education                Int
+  foreign                  Int
+  hospitalTreatment        Int
+  insuredEscortReturn      Int
+  insuredLiving            Int
+  insuredReturn            Int
+  medicine                 Int
+  multipolicy              Int
+  office                   Int
+  pcr                      Int
+  phoneRefund              Int
+  pregnancy                Int
+  relativeIllReturn        Int
+  searchActivities         Int
+  sunburnAssistance        Int
+  thirdPartyTransportation Int
+  urgentStomatology        Int
+  work                     Int
 }

@@ -1,4 +1,4 @@
-import type { PrismaClient } from "@prisma/client";
+import type { PrismaClient } from "database";
 import fp from "fastify-plugin";
 import { initDatabaseConnection } from "server-libs";
 
@@ -10,7 +10,7 @@ declare module "fastify" {
 }
 
 const prismaPlugin = fp(async (server) => {
-  const prisma = await initDatabaseConnection();
+  const prisma = initDatabaseConnection();
 
   // Make Prisma Client available through the fastify server instance: server.prisma
   server.decorate("prisma", prisma);
