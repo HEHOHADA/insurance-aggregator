@@ -258,6 +258,7 @@ importers:
   packages/ui:
     specifiers:
       '@thisbeyond/solid-select': github:thisbeyond/solid-select
+      atomic-router-solid: ^0.8.0
       clsx: ^1.2.1
       daisyui: ^2.51.5
       eslint-config-custom: workspace:*
@@ -269,6 +270,7 @@ importers:
     dependencies:
       '@thisbeyond/solid-select': github.com/thisbeyond/solid-select/f0ec2c855e372b7e4addfc57958574b5731ad456_solid-js@1.7.1
     devDependencies:
+      atomic-router-solid: 0.8.0_solid-js@1.7.1
       clsx: 1.2.1
       daisyui: 2.51.5
       eslint-config-custom: link:../eslint-config-custom
@@ -2749,6 +2751,19 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
+  /atomic-router-solid/0.8.0_solid-js@1.7.1:
+    resolution: {integrity: sha512-ysYJsNBlCMEbt5SMf0M0PHRQYRRX5w1nc8l+s1vY2uQjjuJcY32v7XaQ7a7vJWvmrKcHNuyAG/OqSbN9Fm0C+g==}
+    peerDependencies:
+      atomic-router: ^0.7.0
+      effector: ~22.3.0
+      effector-solid: ~0.22.1
+      history: ~5
+      solid-js: ^1.4 || ^1.5
+    dependencies:
+      classcat: 5.0.4
+      solid-js: 1.7.1
+    dev: true
+
   /atomic-router-solid/0.8.0_svb3tzfpzumfqpwa2f6rclgzai:
     resolution: {integrity: sha512-ysYJsNBlCMEbt5SMf0M0PHRQYRRX5w1nc8l+s1vY2uQjjuJcY32v7XaQ7a7vJWvmrKcHNuyAG/OqSbN9Fm0C+g==}
     peerDependencies:
@@ -3123,7 +3138,6 @@ packages:
 
   /classcat/5.0.4:
     resolution: {integrity: sha512-sbpkOw6z413p+HDGcBENe498WM9woqWHiJxCq7nvmxe9WmrUmqfAcxpIwAiMtM5Q3AhYkzXcNQHqsWq0mND51g==}
-    dev: false
 
   /clean-regexp/1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
@@ -6204,6 +6218,17 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
+  /postcss-import/14.1.0:
+    resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss-value-parser: 4.2.0
+      read-cache: 1.0.0
+      resolve: 1.22.1
+    dev: true
+
   /postcss-import/14.1.0_postcss@8.4.21:
     resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
     engines: {node: '>=10.0.0'}
@@ -6233,6 +6258,22 @@ packages:
       camelcase-css: 2.0.1
       postcss: 8.4.21
 
+  /postcss-load-config/3.1.4:
+    resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
+    engines: {node: '>= 10'}
+    peerDependencies:
+      postcss: '>=8.0.9'
+      ts-node: '>=9.0.0'
+    peerDependenciesMeta:
+      postcss:
+        optional: true
+      ts-node:
+        optional: true
+    dependencies:
+      lilconfig: 2.1.0
+      yaml: 1.10.2
+    dev: true
+
   /postcss-load-config/3.1.4_postcss@8.4.21:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
@@ -6248,6 +6289,15 @@ packages:
       lilconfig: 2.1.0
       postcss: 8.4.21
       yaml: 1.10.2
+
+  /postcss-nested/6.0.0:
+    resolution: {integrity: sha512-0DkamqrPcmkBDsLn+vQDIrtkSbNkv5AD/M322ySo9kqFkCIYklym2xEmWkwo+Y3/qZo34tzEPNUw4y7yMCdv5w==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.2.14
+    dependencies:
+      postcss-selector-parser: 6.0.11
+    dev: true
 
   /postcss-nested/6.0.0_postcss@8.4.21:
     resolution: {integrity: sha512-0DkamqrPcmkBDsLn+vQDIrtkSbNkv5AD/M322ySo9kqFkCIYklym2xEmWkwo+Y3/qZo34tzEPNUw4y7yMCdv5w==}
@@ -7346,6 +7396,8 @@ packages:
     resolution: {integrity: sha512-hOXlFx+YcklJ8kXiCAfk/FMyr4Pm9ck477G0m/us2344Vuj355IpoEDB5UmGAsSpTBmr+4ZhjzW04JuFXkb/fw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
@@ -7362,10 +7414,10 @@ packages:
       object-hash: 3.0.0
       picocolors: 1.0.0
       postcss: 8.4.21
-      postcss-import: 14.1.0_postcss@8.4.21
-      postcss-js: 4.0.1_postcss@8.4.21
-      postcss-load-config: 3.1.4_postcss@8.4.21
-      postcss-nested: 6.0.0_postcss@8.4.21
+      postcss-import: 14.1.0
+      postcss-js: 4.0.1
+      postcss-load-config: 3.1.4
+      postcss-nested: 6.0.0
       postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.2.0
       quick-lru: 5.1.1

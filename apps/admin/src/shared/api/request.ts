@@ -28,9 +28,7 @@ export const requestInternalFx = createEffect<Request, Answer, Answer>();
 
 export type ResponseResult<Data> = string | Record<string, Data> | null;
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export const API_PREFIX = process.env.CLIENT_BACKEND_URL ?? `/api/internal`;
+export const API_PREFIX = import.meta.env.CLIENT_BACKEND_URL ?? `/api/internal`;
 
 async function requestClient({ path, method, ...params }: Request) {
   const headers = new Headers(params.headers);

@@ -3,9 +3,30 @@ import clsx from "clsx";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { outsideClick } from "../../../hooks";
 
-console.log(outsideClick);
+const a = outsideClick;
 
-export const Select = (props) => {
+export type SelectProps<
+  T extends { value: string; label: string },
+  M extends boolean = false
+> = {
+  options: T[];
+  name?: string;
+  isMulti?: M;
+  value?: M extends true ? T[] : T;
+  placeholder?: string;
+  label?: string;
+  disabled?: boolean;
+  onChange?: (value: M extends true ? T[] : T) => void;
+};
+
+type Option = {
+  value: string;
+  label: string;
+};
+
+export function Select<T extends Option, M extends boolean = false>(
+  props: SelectProps<T, M>
+) {
   const {
     options = [],
     value,
@@ -18,11 +39,13 @@ export const Select = (props) => {
   } = props;
 
   const [isOpen, setIsOpen] = createSignal(false);
-  const [selected, setSelected] = createSignal(value);
+  const [selected, setSelected] = createSignal<
+    (M extends true ? T[] : T) | undefined
+  >(value);
 
   const handleOptionClick = (option) => {
-    if (isMulti) {
-      const newSelected = [...selected()];
+    if (props.isMulti) {
+      const newSelected = [...(selected() as T[])];
       const selectedIndex = newSelected.findIndex(
         (s) => s.value === option.value
       );
@@ -33,8 +56,8 @@ export const Select = (props) => {
         newSelected.push(option);
       }
 
-      setSelected(newSelected);
-      onChange?.(newSelected);
+      setSelected(newSelected as any);
+      onChange?.(newSelected as any);
     } else {
       setSelected(option);
       onChange?.(option);
@@ -43,17 +66,21 @@ export const Select = (props) => {
   };
 
   const handleRemoveOption = (option) => {
-    const newSelected = selected().filter((s) => s.value !== option.value);
+    if (props.isMulti) {
+      const newSelected = (selected() as T[]).filter(
+        (s) => s.value !== option.value
+      );
 
-    setSelected(newSelected);
-    onChange(newSelected);
+      setSelected(newSelected as any);
+      onChange(newSelected as any);
+    }
   };
 
   const selectedOption = () => {
-    if (isMulti) {
-      return selected();
+    if (props.isMulti) {
+      return selected() as T[];
     } else {
-      return selected() ? [selected()] : [];
+      return (selected() ? [selected()] : []) as T[];
     }
   };
 
@@ -74,7 +101,7 @@ export const Select = (props) => {
           onClick={() => setIsOpen(!isOpen())}
         >
           <Show
-            when={selectedOption().length > 0}
+            when={selectedOption()?.length > 0}
             fallback={
               <div class={"text-gray-400"}>{placeholder || "Select..."}</div>
             }
@@ -123,4 +150,4 @@ export const Select = (props) => {
       </div>
     </div>
   );
-};
+}

@@ -35,7 +35,11 @@ sample({
 export const sendClicked = createEvent();
 export const clearClicked = createEvent();
 const submitted = createEvent();
-const setField = createEvent<{ key: string; value: string }>();
+
+export const setField = createEvent<{
+  key: string;
+  value: string | string[];
+}>();
 
 const sendFormFx = createEffect((params) => {
   console.log(params);
@@ -44,7 +48,7 @@ const sendFormFx = createEffect((params) => {
 export const resetForm = createEvent();
 export const sendForm = createEvent();
 
-const $form = createStore({})
+export const $form = createStore({})
   .on(setField, (s, { key, value }) => ({
     ...s,
     [key]: value,
