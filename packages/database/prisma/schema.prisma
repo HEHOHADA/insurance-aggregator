@@ -6,6 +6,13 @@ generator client {
   binaryTargets = ["native", "debian-openssl-1.0.x"]
 }
 
+generator erd {
+  provider                  = "prisma-erd-generator"
+  output                    = "./erd.png"
+  theme                     = "forest"
+  includeRelationFromFields = true
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -24,7 +31,7 @@ model Travel {
   company          Company        @relation(fields: [companyId], references: [id])
   approved         Boolean        @default(false)
   serviceProduct   ServiceProduct @relation(fields: [serviceProductId], references: [id])
-  serviceProductId String         @db.Uuid @unique
+  serviceProductId String         @unique @db.Uuid
 }
 
 model Company {

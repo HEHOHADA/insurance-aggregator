@@ -15,6 +15,9 @@
   "devDependencies": {
     "@types/node": "^18.15.11",
     "tsconfig": "workspace:*",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "prisma-erd-generator": "^1.5.4",
+    "@mermaid-js/mermaid-cli": "^10.0.2",
+    "@prisma/generator-helper": "^4.12.0"
   }
 }

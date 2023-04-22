@@ -21,10 +21,10 @@ export const Input: Component<InputProps> = (props) => {
   } = props;
 
   return (
-    <div class={clsx(containerClass)}>
+    <div class={clsx(containerClass, "form-control w-full max-w-xs")}>
       {label && (
-        <label class={clsx(labelClass)} for={name}>
-          {label}
+        <label class={clsx(labelClass, "label")} for={name}>
+          <span class="label">{label}</span>
         </label>
       )}
       <input

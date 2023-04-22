@@ -1,11 +1,8 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
-import { $isLogged, $session, login, logout } from "entities/session";
+import { loadTravel } from "../../features/travel";
 
-export const $loggedIn = $isLogged;
-export const $userName = $session.map((session) => session?.name ?? "");
-
-export const loginClicked = createEvent();
-export const logoutClicked = createEvent();
+export const sendClicked = createEvent();
+export const clearClicked = createEvent();
 const submitted = createEvent();
 const setField = createEvent<{ key: string; value: string }>();
 
@@ -13,10 +10,15 @@ const sendFormFx = createEffect((params) => {
   console.log(params);
 });
 
-const $form = createStore({}).on(setField, (s, { key, value }) => ({
-  ...s,
-  [key]: value,
-}));
+export const resetForm = createEvent();
+export const sendForm = createEvent();
+
+const $form = createStore({})
+  .on(setField, (s, { key, value }) => ({
+    ...s,
+    [key]: value,
+  }))
+  .reset(resetForm);
 
 sample({
   clock: submitted,
@@ -24,21 +26,30 @@ sample({
   target: sendFormFx,
 });
 
-const handleChange = setField.prepend(
+export const handleChange = setField.prepend(
   (
-    e: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }
+    event: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }
   ) => ({
-    key: e.target.name,
-    value: e.target.value,
+    key: event.target.name,
+    value: event.target.value,
   })
 );
 
 sample({
-  clock: loginClicked,
-  target: login,
+  clock: sendClicked,
+  target: sendForm,
 });
 
 sample({
-  clock: logoutClicked,
-  target: logout,
+  source: $form,
+  clock: sendForm,
+  fn: (form) => ({
+    params: form,
+  }),
+  target: loadTravel,
+});
+
+sample({
+  clock: clearClicked,
+  target: resetForm,
 });

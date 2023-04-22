@@ -4,8 +4,9 @@ module.exports = {
   jsxSingleQuote: false,
   tabWidth: 2,
   semi: true,
+  plugins: [require("prettier-plugin-tailwindcss")],
   singleQuote: false,
   bracketSpacing: true,
-  importOrder: ["<THIRD_PARTY_MODULES>",  "^[./]"],
+  importOrder: ["<THIRD_PARTY_MODULES>", "^[./]"],
   importOrderSeparation: true,
 };
