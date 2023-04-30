@@ -1,5 +1,6 @@
 import type { Component } from "solid-js";
 import { Button } from "../../atom";
+import clsx from "clsx";
 
 export { SkeletonCard } from "./skeleton-card";
 
@@ -10,32 +11,38 @@ export type CardProps = {
   price: string;
   onClick: (id: string) => void;
   link: string;
+  color: string;
+  options: { [key: string]: number };
 };
 
 export const Card: Component<CardProps> = (props) => {
-  const { id, imageSrc, name } = props;
+  const { id, name, color, options } = props;
+  const optionsCount = Object.values(options).filter(
+    (option) => option === 0
+  ).length;
 
   return (
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      {imageSrc && (
-        <div class="relative">
-          <a href={props.link} target="_blank">
-            <img src={imageSrc} alt={name} class="w-full h-48 object-cover" />
-          </a>
-        </div>
-      )}
       <div class="p-4">
-        <h3 class="text-lg font-medium text-gray-900">{name}</h3>
-        <p class="text-gray-600">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut nisl
-          nulla. Nulla facilisi. In nec efficitur nulla. Etiam viverra tortor
-          sed lectus feugiat, eget commodo lorem tristique. Fusce nec nibh elit.
-          Curabitur at laoreet velit. Donec vulputate ante in tellus iaculis
-        </p>
+        <a
+          href={props.link}
+          target="_blank"
+          class={clsx("block text-lg font-medium", !color && "text-gray-900")}
+          style={{
+            color,
+          }}
+        >
+          {name}
+        </a>
+        <span>{optionsCount} Options allowed</span>
+        {/* {Object.entries(options).map(() => {*/}
+        {/*  return;*/}
+        {/* })}*/}
+
         <div class="mt-4 flex justify-between items-center">
           <div class="text-lg font-medium text-indigo-600">{props.price}</div>
           <Button
-            class="flex items-center bg-gray-200 hover:bg-gray-300 text-gray-600 rounded-full p-2 focus:outline-none"
+            class="flex items-center bg-rose-600 hover:bg-rose-300 text-white rounded-full p-2 focus:outline-none"
             onClick={() => {
               props.onClick(id);
             }}

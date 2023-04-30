@@ -5,7 +5,7 @@ import type { SQSHandler } from "aws-lambda";
 
 const prisma = initDatabaseConnection();
 
-const handler: SQSHandler = async () => {
+const handler = async () => {
   console.log("get-travel-data handler started");
 
   try {
@@ -59,6 +59,11 @@ const handler: SQSHandler = async () => {
         });
       })
     );
+
+    return {
+      statusCode: 200,
+      body: "Success!",
+    };
   } catch (e) {
     console.error(e);
   }

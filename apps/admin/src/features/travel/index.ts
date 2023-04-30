@@ -1,7 +1,8 @@
 import { travelApi } from "shared/api";
 import type { Travel } from "shared/api";
-import { createEffect, createEvent, createStore, sample } from "effector";
-import { travelLoadFx } from "../../shared/api/travel";
+import { attach, createEvent, createStore, sample } from "effector";
+
+const travelLoadFx = attach({ effect: travelApi.travelLoadFx });
 
 export const $travels = createStore<Travel[]>([])
   .on(travelLoadFx.doneData, (_, data) => data)
@@ -17,6 +18,8 @@ export const $travels = createStore<Travel[]>([])
       return travel;
     });
   });
+
+export const $isLoading = travelLoadFx.pending;
 
 export const loadTravel = createEvent<{ params: any }>();
 
@@ -34,16 +37,11 @@ sample({
 
 export const sendClicked = createEvent();
 export const clearClicked = createEvent();
-const submitted = createEvent();
 
 export const setField = createEvent<{
   key: string;
   value: string | string[];
 }>();
-
-const sendFormFx = createEffect((params) => {
-  console.log(params);
-});
 
 export const resetForm = createEvent();
 export const sendForm = createEvent();
@@ -54,21 +52,6 @@ export const $form = createStore({})
     [key]: value,
   }))
   .reset(resetForm);
-
-sample({
-  clock: submitted,
-  source: $form,
-  target: sendFormFx,
-});
-
-export const handleChange = setField.prepend(
-  (
-    event: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }
-  ) => ({
-    key: event.target.name,
-    value: event.target.value,
-  })
-);
 
 sample({
   clock: sendClicked,

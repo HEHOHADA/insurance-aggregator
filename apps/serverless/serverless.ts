@@ -1,7 +1,7 @@
 import type { AWS } from "@serverless/typescript";
 
 import { functions } from "./src/functions";
-
+import type { EsbuildOptions } from "serverless-esbuild/dist/types";
 import * as dotenv from "dotenv";
 import * as process from "process";
 
@@ -42,11 +42,11 @@ const serverlessConfiguration: AWS = {
       minify: true,
       sourcemap: false,
       exclude: ["aws-sdk"],
-      target: "node16",
-      define: { ["require.resolve"]: undefined },
+      target: "node18",
+      define: { ["require.resolve"]: undefined as any },
       platform: "node",
       concurrency: 10,
-    },
+    } as EsbuildOptions,
   },
 };
 
