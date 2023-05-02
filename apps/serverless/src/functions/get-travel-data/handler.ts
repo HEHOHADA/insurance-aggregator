@@ -1,13 +1,10 @@
 import { initDatabaseConnection } from "server-libs";
 import type { CherepahaResponse } from "../../lib";
 import { handlerConfig, middyfy } from "../../lib";
-import type { SQSHandler } from "aws-lambda";
 
 const prisma = initDatabaseConnection();
 
 const handler = async () => {
-  console.log("get-travel-data handler started");
-
   try {
     const now = new Date();
     const dateStart = now.toISOString().split("T")[0];

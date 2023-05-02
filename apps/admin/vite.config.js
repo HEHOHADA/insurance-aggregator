@@ -5,7 +5,11 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [
-    solidPlugin(),
+    solidPlugin({
+      babel: {
+        plugins: ["effector/babel-plugin"],
+      },
+    }),
     tsconfigPaths({
       projects: [
         resolve("tsconfig.json"),

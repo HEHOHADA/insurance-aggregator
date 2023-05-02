@@ -16,9 +16,10 @@
     "tailwindcss": "^3.3.1",
     "tsconfig": "workspace:*",
     "typescript": "^5.0.2",
-    "atomic-router-solid": "^0.8.0"
+    "postcss": "^8.4.23",
+    "autoprefixer": "^10.4.14"
   },
-  "dependencies": {
-    "@thisbeyond/solid-select": "github:thisbeyond/solid-select"
+  "peerDependencies": {
+    "atomic-router-solid": "^0.8.0"
   }
 }

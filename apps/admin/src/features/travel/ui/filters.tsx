@@ -1,7 +1,9 @@
-import type { Component } from "solid-js";
-import { Button, Filter, Select } from "ui";
-import { countries } from "../../../shared/countries";
 import { useStoreMap } from "effector-solid";
+import type { Component } from "solid-js";
+
+import { Button, Filter, Select } from "ui";
+
+import { countries } from "../../../shared/countries";
 import { $form, sendClicked, setField } from "../index";
 
 export const Filters: Component = (props) => {
@@ -37,9 +39,7 @@ const CountryFilter = () => {
       const fieldValue = store[key] as string[];
 
       if (fieldValue) {
-        return fieldValue?.map((field) =>
-          options.find((option) => field === option.value)
-        );
+        return fieldValue?.map((field) => options.find((option) => field === option.value));
       }
 
       return [];

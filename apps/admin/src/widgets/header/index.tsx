@@ -1,4 +1,5 @@
 import type { Component } from "solid-js";
+
 import { Link, Logo } from "ui";
 
 export const Header: Component = () => {

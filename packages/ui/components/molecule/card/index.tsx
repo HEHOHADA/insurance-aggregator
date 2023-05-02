@@ -1,4 +1,4 @@
-import type { Component } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Button } from "../../atom";
 import clsx from "clsx";
 
@@ -12,18 +12,15 @@ export type CardProps = {
   onClick: (id: string) => void;
   link: string;
   color: string;
-  options: { [key: string]: number };
+  children: JSX.Element;
 };
 
 export const Card: Component<CardProps> = (props) => {
-  const { id, name, color, options } = props;
-  const optionsCount = Object.values(options).filter(
-    (option) => option === 0
-  ).length;
+  const { id, name, color, children } = props;
 
   return (
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <div class="p-4">
+      <div class="flex flex-col gap-2 p-4">
         <a
           href={props.link}
           target="_blank"
@@ -34,11 +31,8 @@ export const Card: Component<CardProps> = (props) => {
         >
           {name}
         </a>
-        <span>{optionsCount} Options allowed</span>
-        {/* {Object.entries(options).map(() => {*/}
-        {/*  return;*/}
-        {/* })}*/}
 
+        {children}
         <div class="mt-4 flex justify-between items-center">
           <div class="text-lg font-medium text-indigo-600">{props.price}</div>
           <Button

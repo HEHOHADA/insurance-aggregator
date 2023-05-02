@@ -2,7 +2,7 @@ import type { Component } from "solid-js";
 
 export type TagProps = {
   name: string;
-  value: string;
+  value?: string | number;
   checked?: boolean;
 };
 
@@ -10,7 +10,8 @@ export const Tag: Component<TagProps> = (props) => {
   const { name, value, checked } = props;
 
   return (
-    <span class="inline-flex items-center bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
+    <span
+      class="inline-flex gap-1 items-center bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold mb-2">
       {checked && (
         <svg
           class="inline-block fill-current w-4 h-4 mr-2"
@@ -21,7 +22,7 @@ export const Tag: Component<TagProps> = (props) => {
         </svg>
       )}
       <span class="text-black">{name}</span>
-      <span class="text-gray-600">{value}</span>
+      {value && <span class="text-gray-600">{value}</span>}
     </span>
   );
 };

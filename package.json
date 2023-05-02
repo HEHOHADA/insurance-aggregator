@@ -16,12 +16,8 @@
     "eslint-config-custom": "workspace:*",
     "prettier": "latest",
     "turbo": "latest",
-    "@types/node": "^18.15.11"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "dependencies": {
+    "@types/node": "^18.15.11",
+    "prettier-config-custom": "workspace:*"
   },
   "packageManager": "pnpm@7.29.3"
 }

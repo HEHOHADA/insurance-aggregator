@@ -1,7 +1,7 @@
 export const schema = {
   type: "object",
   properties: {
-    name: {type: "string"},
+    name: { type: "string" },
   },
   required: ["name"],
 } as const;

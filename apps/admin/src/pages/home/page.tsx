@@ -1,46 +1,32 @@
+import { useUnit } from "effector-solid";
 import { For, Show } from "solid-js";
 
+import { SkeletonCard } from "ui";
+
+import { $isLoading, $travels, banTravel } from "../../features/travel";
+import { TravelCard, Filters } from "../../features/travel/ui";
 import { Header } from "../../widgets";
-import { Filters } from "../../features/travel/ui/filters";
-import { Card, SkeletonCard } from "ui";
-import { useUnit } from "effector-solid";
-import { $isLoading, $travels } from "../../features/travel";
+
+const SKELETON_FILLED = new Array(5).fill(null);
 
 export function HomePage() {
-  const isLoading = useUnit($isLoading);
-  const items = useUnit($travels);
+  const [isLoading, items] = useUnit([$isLoading, $travels]);
 
   return (
     <div class="h-screen overflow-y-hidden">
       <Header />
-      <div class="max-w-7xl mx-auto flex h-full">
+      <div class="mx-auto flex h-full max-w-7xl">
         <aside class="w-1/4 bg-white shadow">
           <Filters />
         </aside>
-        <main class="w-3/4 px-4 py-6 overflow-auto max-h-[800px]">
+        <main class="max-h-[800px] w-3/4 overflow-auto px-4 py-6">
           <div>
             <h2 class="text-2xl font-medium text-gray-900">Search Result</h2>
-            <div class="grid grid-cols-1 gap-4 mt-6">
-              <Show
-                when={!isLoading()}
-                fallback={
-                  <For each={new Array(5).fill(null)}>
-                    {() => <SkeletonCard />}
-                  </For>
-                }
-              >
+            <div class="mt-6 grid grid-cols-1 gap-4">
+              <Show when={!isLoading()} fallback={<For each={SKELETON_FILLED}>{SkeletonCard}</For>}>
                 <For each={items()}>
                   {(item) => {
-                    return (
-                      <Card
-                        options={item.serviceProduct}
-                        name={item.company.name}
-                        price={`${item.priceRub} RUB`}
-                        onClick={() => {}}
-                        link={item.company.url}
-                        color={item.company.colorHexCode}
-                      />
-                    );
+                    return <TravelCard travel={item} onBlock={(id) => banTravel({ id })} />;
                   }}
                 </For>
               </Show>

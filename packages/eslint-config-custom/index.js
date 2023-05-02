@@ -21,11 +21,11 @@ module.exports = {
   plugins: [
     "eslint-plugin-jsdoc",
     "eslint-plugin-prefer-arrow",
-    "eslint-plugin-solid",
     "import",
     "unicorn",
     "check-file",
     "@typescript-eslint",
+    "solid",
   ],
   settings: {
     "import/parsers": {

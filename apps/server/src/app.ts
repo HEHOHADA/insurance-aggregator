@@ -1,7 +1,7 @@
+import cookie from "@fastify/cookie";
+import cors from "@fastify/cors";
 import type { FastifyServerOptions } from "fastify";
 import Fastify from "fastify";
-import cors from "@fastify/cors";
-import cookie from "@fastify/cookie";
 
 import { prismaPlugin } from "./db";
 import { travelRoutes } from "./services";
