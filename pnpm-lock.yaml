@@ -4,14 +4,12 @@ importers:
 
   .:
     specifiers:
-      '@trivago/prettier-plugin-sort-imports': ^4.1.1
       '@types/node': ^18.15.11
       eslint-config-custom: workspace:*
       prettier: latest
       prettier-config-custom: workspace:*
       turbo: latest
     devDependencies:
-      '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.8
       '@types/node': 18.15.11
       eslint-config-custom: link:packages/eslint-config-custom
       prettier: 2.8.8
@@ -273,6 +271,7 @@ importers:
 
   packages/ui:
     specifiers:
+      atomic-router-solid: ^0.8.0
       autoprefixer: ^10.4.14
       clsx: ^1.2.1
       daisyui: ^2.51.5
@@ -284,6 +283,7 @@ importers:
       tsconfig: workspace:*
       typescript: ^5.0.2
     devDependencies:
+      atomic-router-solid: 0.8.0_solid-js@1.7.1
       autoprefixer: 10.4.14_postcss@8.4.23
       clsx: 1.2.1
       daisyui: 2.51.5_zmwpaxxolxfsc5pnrezed2bx24
@@ -1071,6 +1071,7 @@ packages:
       '@babel/types': 7.21.3
       jsesc: 2.5.2
       source-map: 0.5.7
+    dev: false
 
   /@babel/generator/7.21.3:
     resolution: {integrity: sha512-QS3iR1GYC/YGUnW7IdggFeN5c1poPUurnGttOV/bZgPGV+izC/D8HnD6DLwod0fsatNyVn1G3EVWMYIF0nHbeA==}
@@ -1333,6 +1334,7 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@babel/traverse/7.21.3:
     resolution: {integrity: sha512-XLyopNeaTancVitYZe2MlUEvgKb6YVVPXzofHgqHijCImG33b/uTurMS488ht/Hbsb2XK3U2BnSTxKVNGV3nGQ==}
@@ -1358,6 +1360,7 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+    dev: false
 
   /@babel/types/7.21.3:
     resolution: {integrity: sha512-sBGdETxC+/M4o/zKC0sl6sjWv62WFR/uzxrJ6uYyMLZOUlPnwzw0tKgVHOXxaAd5l2g8pEDM5RZ495GPQI77kg==}
@@ -2255,26 +2258,6 @@ packages:
       - supports-color
     dev: false
 
-  /@trivago/prettier-plugin-sort-imports/4.1.1_prettier@2.8.8:
-    resolution: {integrity: sha512-dQ2r2uzNr1x6pJsuh/8x0IRA3CBUB+pWEW3J/7N98axqt7SQSm+2fy0FLNXvXGg77xEDC7KHxJlHfLYyi7PDcw==}
-    peerDependencies:
-      '@vue/compiler-sfc': 3.x
-      prettier: 2.x
-    peerDependenciesMeta:
-      '@vue/compiler-sfc':
-        optional: true
-    dependencies:
-      '@babel/generator': 7.17.7
-      '@babel/parser': 7.21.3
-      '@babel/traverse': 7.17.3
-      '@babel/types': 7.17.0
-      javascript-natural-sort: 0.7.1
-      lodash: 4.17.21
-      prettier: 2.8.8
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@tsconfig/node10/1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
     dev: true
@@ -2808,6 +2791,19 @@ packages:
       solid-js: 1.7.0
     dev: false
 
+  /atomic-router-solid/0.8.0_solid-js@1.7.1:
+    resolution: {integrity: sha512-ysYJsNBlCMEbt5SMf0M0PHRQYRRX5w1nc8l+s1vY2uQjjuJcY32v7XaQ7a7vJWvmrKcHNuyAG/OqSbN9Fm0C+g==}
+    peerDependencies:
+      atomic-router: ^0.7.0
+      effector: ~22.3.0
+      effector-solid: ~0.22.1
+      history: ~5
+      solid-js: ^1.4 || ^1.5
+    dependencies:
+      classcat: 5.0.4
+      solid-js: 1.7.1
+    dev: true
+
   /atomic-router/0.8.0_q272z7bki54z5gfv7mzjd57ytm:
     resolution: {integrity: sha512-jUNmxqs4zKiTWnvcgNU7u51k+wS8XHYgy7YKTTwiuNB+PPRj+sRAjE+50nyExDygRS5A7yELhT14ziIICjQoqQ==}
     engines: {node: '>=10'}
@@ -3181,7 +3177,6 @@ packages:
 
   /classcat/5.0.4:
     resolution: {integrity: sha512-sbpkOw6z413p+HDGcBENe498WM9woqWHiJxCq7nvmxe9WmrUmqfAcxpIwAiMtM5Q3AhYkzXcNQHqsWq0mND51g==}
-    dev: false
 
   /clean-regexp/1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
@@ -5294,6 +5289,7 @@ packages:
 
   /javascript-natural-sort/0.7.1:
     resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
+    dev: false
 
   /jiti/1.18.2:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
@@ -7198,6 +7194,7 @@ packages:
   /source-map/0.5.7:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
     engines: {node: '>=0.10.0'}
+    dev: false
 
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}

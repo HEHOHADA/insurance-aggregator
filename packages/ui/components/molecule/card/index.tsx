@@ -1,6 +1,8 @@
 import type { Component, JSX } from "solid-js";
-import { Button } from "../../atom";
+
 import clsx from "clsx";
+
+import { Button } from "../../atom";
 
 export { SkeletonCard } from "./skeleton-card";
 
@@ -16,7 +18,9 @@ export type CardProps = {
 };
 
 export const Card: Component<CardProps> = (props) => {
-  const { id, name, color, children } = props;
+  const onClick = () => {
+    props.onClick(props.id);
+  };
 
   return (
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -24,22 +28,20 @@ export const Card: Component<CardProps> = (props) => {
         <a
           href={props.link}
           target="_blank"
-          class={clsx("block text-lg font-medium", !color && "text-gray-900")}
+          class={clsx("block text-lg font-medium", !props.color && "text-gray-900")}
           style={{
-            color,
+            color: props.color,
           }}
         >
-          {name}
+          {props.name}
         </a>
 
-        {children}
+        {props.children}
         <div class="mt-4 flex justify-between items-center">
           <div class="text-lg font-medium text-indigo-600">{props.price}</div>
           <Button
             class="flex items-center bg-rose-600 hover:bg-rose-300 text-white rounded-full p-2 focus:outline-none"
-            onClick={() => {
-              props.onClick(id);
-            }}
+            onClick={onClick}
           >
             <svg class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
               <path

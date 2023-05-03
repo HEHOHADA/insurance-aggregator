@@ -1,4 +1,6 @@
 import type { Component, JSX } from "solid-js";
+import { splitProps } from "solid-js";
+
 import clsx from "clsx";
 
 export type InputProps = JSX.HTMLAttributes<HTMLInputElement> & {
@@ -10,31 +12,27 @@ export type InputProps = JSX.HTMLAttributes<HTMLInputElement> & {
 };
 
 export const Input: Component<InputProps> = (props) => {
-  const {
-    class: className,
-    name,
-    label,
-    containerClass,
-    labelClass,
-    placeholder,
-    ...otherProps
-  } = props;
+  const [used, other] = splitProps(props, [
+    "label",
+    "class",
+    "name",
+    "containerClass",
+    "labelClass",
+    "placeholder",
+  ]);
 
   return (
-    <div class={clsx(containerClass, "form-control w-full max-w-xs")}>
-      {label && (
-        <label class={clsx(labelClass, "label")} for={name}>
-          <span class="label">{label}</span>
+    <div class={clsx(used.containerClass, "form-control w-full max-w-xs")}>
+      {used.label && (
+        <label class={clsx(used.labelClass, "label")} for={used.name}>
+          <span class="label">{used.label}</span>
         </label>
       )}
       <input
         type="text"
-        placeholder={placeholder || "Enter text..."}
-        class={clsx(
-          "input input-bordered input-primary w-full max-w-xs",
-          className
-        )}
-        {...otherProps}
+        placeholder={used.placeholder || "Enter text..."}
+        class={clsx("input input-bordered input-primary w-full max-w-xs", used.class)}
+        {...other}
       />
     </div>
   );

@@ -1,6 +1,8 @@
+import type { JSX } from "solid-js";
+import { splitProps } from "solid-js";
+
 import type { CollapseProps } from "./collapse";
 import { Collapse } from "./collapse";
-import type { JSX } from "solid-js";
 
 export type AccordionItemProps = CollapseProps & {
   contentPadding?: string;
@@ -13,13 +15,10 @@ export type AccordionItemProps = CollapseProps & {
  * It can be used as a standalone component or as a child of Accordion.
  *
  * @param {AccordionItemProps} props
- * @param {ReactNode} props.children - content of the accordion item
  * @param {boolean} [props.isOpen] - whether the accordion item is open or not
  * @param {boolean} [props.initiallyOpen] - whether the accordion item is open initially or not
  * @param {string | JSX.Element} [props.title] - title of the accordion item
  * @param {boolean} [props.noBorders] - whether the accordion item has borders or not
- * @param {IconType} [props.icon] - icon of the accordion item
- * @param {ComponentType<ComponentPropsWithRef<typeof Header>>} [props.header] - header of the accordion item
  * @param {boolean} [props.headerTextWraps] - whether the header text wraps or not
  * @param {string} [props.className] - class name of the accordion item
  * @param {Function} [props.onClick] - callback when the accordion item is clicked
@@ -32,11 +31,11 @@ export type AccordionItemProps = CollapseProps & {
  *
  */
 export const AccordionItem = (props: AccordionItemProps) => {
-  const { isOpen, header, children, contentPadding, ...restProps } = props;
+  const [used, other] = splitProps(props, ["isOpen", "header", "children", "contentPadding"]);
 
   return (
-    <Collapse isOpen={isOpen} headerClass="p1 w-full" {...restProps}>
-      <div>{typeof children === "function" ? children(isOpen) : children}</div>
+    <Collapse isOpen={used.isOpen} headerClass="p1 w-full" {...other}>
+      <div>{typeof used.children === "function" ? used.children(used.isOpen) : used.children}</div>
     </Collapse>
   );
 };

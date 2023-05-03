@@ -17,7 +17,8 @@
     "tsconfig": "workspace:*",
     "typescript": "^5.0.2",
     "postcss": "^8.4.23",
-    "autoprefixer": "^10.4.14"
+    "autoprefixer": "^10.4.14",
+    "atomic-router-solid": "^0.8.0"
   },
   "peerDependencies": {
     "atomic-router-solid": "^0.8.0"

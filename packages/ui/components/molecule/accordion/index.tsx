@@ -1,7 +1,9 @@
-import type { AccordionItemProps } from "./accordion-item";
 import type { JSX } from "solid-js";
 import { children, createEffect, createSignal, For } from "solid-js";
+
 import clsx from "clsx";
+
+import type { AccordionItemProps } from "./accordion-item";
 
 export { AccordionItem } from "./accordion-item";
 export type { AccordionItemProps };
@@ -41,14 +43,12 @@ export type AccordionProps = {
  * </Accordion>
  */
 export const Accordion = (props: AccordionProps) => {
-  const { className } = props;
-
   if (!props.children) {
     return null;
   }
 
   return (
-    <div class={clsx("flex flex-col", className)}>
+    <div class={clsx("flex flex-col", props.className)}>
       <For each={props.children}>
         {(child, index) => {
           return child;

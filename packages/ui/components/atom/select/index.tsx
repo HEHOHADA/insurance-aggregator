@@ -1,14 +1,13 @@
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, For, mergeProps, Show } from "solid-js";
+
 import clsx from "clsx";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { outsideClick } from "../../../hooks";
 
 const a = outsideClick;
 
-export type SelectProps<
-  T extends { value: string; label: string },
-  M extends boolean = false
-> = {
+export type SelectProps<T extends { value: string; label: string }, M extends boolean = false> = {
   options: T[];
   name?: string;
   isMulti?: M;
@@ -24,31 +23,25 @@ type Option = {
   label: string;
 };
 
-export function Select<T extends Option, M extends boolean = false>(
-  props: SelectProps<T, M>
-) {
-  const {
-    options = [],
-    value,
-    name,
-    isMulti,
-    onChange,
-    placeholder = "",
-    label = "",
-    disabled = false,
-  } = props;
-
+export function Select<T extends Option, M extends boolean = false>(props: SelectProps<T, M>) {
+  const mergedProps = mergeProps(
+    {
+      options: [],
+      placeholder: "",
+      label: "",
+      disabled: false,
+    },
+    props,
+  );
   const [isOpen, setIsOpen] = createSignal(false);
-  const [selected, setSelected] = createSignal<
-    (M extends true ? T[] : T) | undefined
-  >(value);
+  const [selected, setSelected] = createSignal<(M extends true ? T[] : T) | undefined>(
+    mergedProps.value,
+  );
 
   const handleOptionClick = (option) => {
     if (props.isMulti) {
       const newSelected = [...(selected() as T[])];
-      const selectedIndex = newSelected.findIndex(
-        (s) => s.value === option.value
-      );
+      const selectedIndex = newSelected.findIndex((s) => s.value === option.value);
 
       if (selectedIndex > -1) {
         newSelected.splice(selectedIndex, 1);
@@ -57,22 +50,20 @@ export function Select<T extends Option, M extends boolean = false>(
       }
 
       setSelected(newSelected as any);
-      onChange?.(newSelected as any);
+      mergedProps.onChange?.(newSelected as any);
     } else {
       setSelected(option);
-      onChange?.(option);
+      mergedProps.onChange?.(option);
       setIsOpen(false);
     }
   };
 
   const handleRemoveOption = (option) => {
     if (props.isMulti) {
-      const newSelected = (selected() as T[]).filter(
-        (s) => s.value !== option.value
-      );
+      const newSelected = (selected() as T[]).filter((s) => s.value !== option.value);
 
       setSelected(newSelected as any);
-      onChange(newSelected as any);
+      mergedProps.onChange(newSelected as any);
     }
   };
 
@@ -86,9 +77,9 @@ export function Select<T extends Option, M extends boolean = false>(
 
   return (
     <div class={`w-full`}>
-      {label && (
-        <label class={`block text-gray-700 text-sm font-bold mb-2`} for={label}>
-          {label}
+      {mergedProps.label && (
+        <label class={`block text-gray-700 text-sm font-bold mb-2`} for={mergedProps.label}>
+          {mergedProps.label}
         </label>
       )}
 
@@ -96,15 +87,13 @@ export function Select<T extends Option, M extends boolean = false>(
         <div
           class={clsx(
             "flex justify-between items-center bg-white rounded-md border border-gray-300 px-3 py-2",
-            disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+            mergedProps.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
           )}
           onClick={() => setIsOpen(!isOpen())}
         >
           <Show
             when={selectedOption()?.length > 0}
-            fallback={
-              <div class={"text-gray-400"}>{placeholder || "Select..."}</div>
-            }
+            fallback={<div class={"text-gray-400"}>{mergedProps.placeholder || "Select..."}</div>}
           >
             <div class={`flex flex-wrap gap-2 max-w-full`}>
               <For each={selectedOption()}>
@@ -115,10 +104,7 @@ export function Select<T extends Option, M extends boolean = false>(
                     <span class="whitespace-nowrap overflow-ellipsis overflow-x-hidden">
                       {option.label}
                     </span>
-                    <button
-                      class={`ml-1 rounded-full`}
-                      onClick={() => handleRemoveOption(option)}
-                    >
+                    <button class={`ml-1 rounded-full`} onClick={() => handleRemoveOption(option)}>
                       x
                     </button>
                   </div>
@@ -134,7 +120,7 @@ export function Select<T extends Option, M extends boolean = false>(
             class={`absolute z-10 bg-white rounded-md border border-gray-300 w-full mt-2 overflow-auto max-h-[500px]`}
           >
             <ul class={`py-1`}>
-              <For each={options}>
+              <For each={mergedProps.options}>
                 {(option) => (
                   <li
                     class={`px-3 py-2 hover:bg-gray-100 cursor-pointer`}
