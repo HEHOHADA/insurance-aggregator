@@ -10,7 +10,7 @@ dotenv.config();
 const serverlessConfiguration: AWS = {
   service: "api1",
   frameworkVersion: "3.29.0",
-  plugins: ["serverless-esbuild", "serverless-offline", "serverless-chrome"],
+  plugins: ["serverless-esbuild", "serverless-offline"],
   provider: {
     name: "aws",
     runtime: "nodejs16.x",
@@ -42,7 +42,7 @@ const serverlessConfiguration: AWS = {
       minify: true,
       sourcemap: false,
       exclude: ["aws-sdk"],
-      target: "node18",
+      target: "node16",
       define: { ["require.resolve"]: undefined as any },
       platform: "node",
       concurrency: 10,

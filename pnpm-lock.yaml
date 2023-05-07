@@ -33,7 +33,6 @@ importers:
       lib: workspace:*
       postcss: ^8.4.21
       prettier-config-custom: workspace:*
-      query-string: ^8.1.0
       solid-js: ^1.6.10
       tailwindcss: ^3.3.2
       tsconfig: workspace:*
@@ -49,7 +48,6 @@ importers:
       effector: 22.8.2
       effector-solid: 0.22.7_h6oz6hufgp7vapl7utsn647g4a
       history: 5.3.0
-      query-string: 8.1.0
       solid-js: 1.7.0
       ui: link:../../packages/ui
     devDependencies:
@@ -262,10 +260,12 @@ importers:
   packages/server-libs:
     specifiers:
       database: workspace:*
+      tsconfig: workspace:*
       typescript: ^5.0.2
     dependencies:
       database: link:../database
     devDependencies:
+      tsconfig: link:../tsconfig
       typescript: 5.0.2
 
   packages/tsconfig:
@@ -3684,11 +3684,6 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /decode-uri-component/0.4.1:
-    resolution: {integrity: sha512-+8VxcR21HhTy8nOt6jf20w0c9CADrw1O8d+VZ/YzzCt4bJ3uBjw+D1q2osAB8RnpwwaeYBxy0HyKQxD5JBMuuQ==}
-    engines: {node: '>=14.16'}
-    dev: false
-
   /decompress-response/6.0.0:
     resolution: {integrity: sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==}
     engines: {node: '>=10'}
@@ -4689,11 +4684,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
-
-  /filter-obj/5.1.0:
-    resolution: {integrity: sha512-qWeTREPoT7I0bifpPUXtxkZJ1XJzxWtfoWWkdVGqa+eCr3SHW/Ocp89o8vLvbUuQnadybJpjOKu4V+RwO6sGng==}
-    engines: {node: '>=14.16'}
-    dev: false
 
   /find-my-way/7.6.0:
     resolution: {integrity: sha512-H7berWdHJ+5CNVr4ilLWPai4ml7Y2qAsxjw3pfeBxPigZmaDTzF0wjJLj90xRCmGcWYcyt050yN+34OZDJm1eQ==}
@@ -7039,15 +7029,6 @@ packages:
       side-channel: 1.0.4
     dev: true
 
-  /query-string/8.1.0:
-    resolution: {integrity: sha512-BFQeWxJOZxZGix7y+SByG3F36dA0AbTy9o6pSmKFcFz7DAj0re9Frkty3saBn3nHo3D0oZJ/+rx3r8H8r8Jbpw==}
-    engines: {node: '>=14.16'}
-    dependencies:
-      decode-uri-component: 0.4.1
-      filter-obj: 5.1.0
-      split-on-first: 3.0.0
-    dev: false
-
   /querystring/0.2.0:
     resolution: {integrity: sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g==}
     engines: {node: '>=0.4.x'}
@@ -7664,11 +7645,6 @@ packages:
 
   /spdx-license-ids/3.0.13:
     resolution: {integrity: sha512-XkD+zwiqXHikFZm4AX/7JSCXA98U5Db4AFd5XUg/+9UNtnH75+Z9KxtpYiJZx36mUDVOwH83pl7yvCer6ewM3w==}
-    dev: false
-
-  /split-on-first/3.0.0:
-    resolution: {integrity: sha512-qxQJTx2ryR0Dw0ITYyekNQWpz6f8dGd7vffGNflQQ3Iqj9NJ6qiZ7ELpZsJ/QBhIVAiDfXdag3+Gp8RvWa62AA==}
-    engines: {node: '>=12'}
     dev: false
 
   /split2/3.2.2:

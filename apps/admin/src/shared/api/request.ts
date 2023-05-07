@@ -1,8 +1,9 @@
 import { createEffect } from "effector";
-import queryString from "query-string";
 
 export function queryToString(query: Record<string, string> | undefined): string {
-  return query ? `?${queryString.stringify(query)}` : "";
+  const params = new URLSearchParams(query).toString();
+
+  return params ? `?${params}` : "";
 }
 
 export interface Request {

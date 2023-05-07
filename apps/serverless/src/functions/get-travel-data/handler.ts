@@ -8,6 +8,7 @@ const prisma = initDatabaseConnection();
 
 const handler = async () => {
   try {
+    console.log("start");
     const now = new Date();
     const dateStart = now.toISOString().split("T")[0];
 
