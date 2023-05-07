@@ -1,16 +1,16 @@
 import type { AWS } from "@serverless/typescript";
-
-import { functions } from "./src/functions";
-import type { EsbuildOptions } from "serverless-esbuild/dist/types";
 import * as dotenv from "dotenv";
 import * as process from "process";
+import type { EsbuildOptions } from "serverless-esbuild/dist/types";
+
+import { functions } from "./src/functions";
 
 dotenv.config();
 
 const serverlessConfiguration: AWS = {
   service: "api1",
   frameworkVersion: "3.29.0",
-  plugins: ["serverless-esbuild", "serverless-offline"],
+  plugins: ["serverless-esbuild", "serverless-offline", "serverless-chrome"],
   provider: {
     name: "aws",
     runtime: "nodejs16.x",

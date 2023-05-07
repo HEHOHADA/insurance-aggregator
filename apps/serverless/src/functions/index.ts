@@ -7,9 +7,6 @@ export const functions: AWS["functions"] = {
       {
         schedule: {
           rate: ["rate(5 minutes)"],
-          input: {
-            d: 1,
-          },
         },
       },
     ],

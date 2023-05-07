@@ -9,6 +9,7 @@ This is a monorepo for the insurance aggregator project.
 
 + `packages` - packages that are used by apps
 - `ui`: a stub component library shared to applications
+- `lib`: a stub library shared to applications
 - `eslint-config-custom`: `eslint` configurations (`eslint-config-prettier`)
 - `prettier-config-custom`: `prettier` configurations
 - `database`: `prisma-client` configurations with schema and migrations/generated files

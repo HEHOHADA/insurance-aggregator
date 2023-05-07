@@ -3,7 +3,7 @@ import { For, Show } from "solid-js";
 
 import { SkeletonCard } from "ui";
 
-import { $isLoading, $travels, banTravel } from "../../features/travel";
+import { $isLoading, $travels, banTravel } from "../../features";
 import { TravelCard, Filters } from "../../features/travel/ui";
 import { Header } from "../../widgets";
 

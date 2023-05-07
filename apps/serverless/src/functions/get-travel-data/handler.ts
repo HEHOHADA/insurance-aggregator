@@ -1,6 +1,8 @@
 import { initDatabaseConnection } from "server-libs";
+
 import type { CherepahaResponse } from "../../lib";
 import { handlerConfig, middyfy } from "../../lib";
+import { countries } from "../../lib/countries";
 
 const prisma = initDatabaseConnection();
 
@@ -8,10 +10,15 @@ const handler = async () => {
   try {
     const now = new Date();
     const dateStart = now.toISOString().split("T")[0];
+
+    const country = countries[Math.floor(Math.random() * countries.length)];
+
     const currentParams = {
       ...handlerConfig.cherepaha.params,
       dateStart,
+      countryGroups: [country],
     };
+
     const response = await fetch(handlerConfig.cherepaha.url, {
       method: handlerConfig.cherepaha.method,
       headers: {
@@ -37,7 +44,7 @@ const handler = async () => {
             endDate: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000),
             createdAt: now,
             approved: false,
-            destination: "World",
+            destination: country,
             url:
               calculation.companyId in handlerConfig.cherepaha.companies
                 ? handlerConfig.cherepaha.companies[calculation.companyId].url
@@ -54,7 +61,7 @@ const handler = async () => {
             },
           },
         });
-      })
+      }),
     );
 
     return {

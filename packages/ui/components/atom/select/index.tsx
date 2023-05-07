@@ -7,15 +7,22 @@ import { outsideClick } from "../../../hooks";
 
 const a = outsideClick;
 
-export type SelectProps<T extends { value: string; label: string }, M extends boolean = false> = {
+export type SelectProps<
+  T extends {
+    value: string;
+    label: string;
+  },
+  M extends boolean = false,
+  V = M extends true ? T[] : T,
+> = {
   options: T[];
   name?: string;
   isMulti?: M;
-  value?: M extends true ? T[] : T;
+  value?: V;
   placeholder?: string;
   label?: string;
   disabled?: boolean;
-  onChange?: (value: M extends true ? T[] : T) => void;
+  onChange?: (value: V) => void;
 };
 
 type Option = {
@@ -116,6 +123,8 @@ export function Select<T extends Option, M extends boolean = false>(props: Selec
 
         <Show when={isOpen()}>
           <div
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             use:outsideClick={() => setIsOpen(false)}
             class={`absolute z-10 bg-white rounded-md border border-gray-300 w-full mt-2 overflow-auto max-h-[500px]`}
           >

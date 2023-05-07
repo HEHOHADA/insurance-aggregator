@@ -1,5 +1,5 @@
 // module.exports = require("config/tailwind.config");
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     "./index.html",
@@ -9,6 +9,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {},
+  },
+  daisyui: {
+    themes: false,
   },
   plugins: [require("daisyui")],
 };

@@ -6,7 +6,7 @@ import { Button, Filter, Select } from "ui";
 import { countries } from "../../../shared/countries";
 import { $form, sendClicked, setField } from "../index";
 
-export const Filters: Component = (props) => {
+export const Filters: Component = () => {
   return (
     <div class="px-4 py-6">
       <h2 class="text-lg font-medium text-gray-900">Filters</h2>
