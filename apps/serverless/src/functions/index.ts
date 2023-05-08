@@ -10,6 +10,11 @@ export const functions: AWS["functions"] = {
         schedule: {
           rate: ["rate(5 minutes)"],
         },
+        http: {
+          method: "GET",
+          path: "get-travel-data",
+          cors: true,
+        },
       },
     ],
   },

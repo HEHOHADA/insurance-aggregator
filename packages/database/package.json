@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@prisma/client": "^4.12.0",
-    "prisma": "^4.12.0"
+    "prisma": "^4.12.0",
+    "pg": "^8.10.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
@@ -18,6 +19,7 @@
     "typescript": "^5.0.2",
     "prisma-erd-generator": "^1.5.4",
     "@mermaid-js/mermaid-cli": "^10.0.2",
-    "@prisma/generator-helper": "^4.12.0"
+    "@prisma/generator-helper": "^4.12.0",
+    "@types/pg": "^8.6.6"
   }
 }
