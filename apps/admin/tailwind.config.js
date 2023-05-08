@@ -4,7 +4,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}",
-    "../../packages/ui/**/*.{ts,tsx,css}",
+    "../../packages/ui/components/**/*.{ts,tsx,css}",
   ],
   darkMode: "class",
   theme: {

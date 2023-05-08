@@ -45,37 +45,6 @@ const handler: Handler = async (event, context, callback) => {
       data.calculations.map(async (calculation) => {
         console.log("data.calculations.forEach", calculation);
         const id = uuidv4();
-        // await prisma.travel.create({
-        //   data: {
-        //     price: calculation.priceRub,
-        //     currency: "RUB",
-        //     company: {
-        //       connect: {
-        //         id: calculation.companyId,
-        //       },
-        //     },
-        //     startDate: new Date(dateStart),
-        //     endDate: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000),
-        //     createdAt: now,
-        //     approved: false,
-        //     destination: country,
-        //     url:
-        //       calculation.companyId in handlerConfig.cherepaha.companies
-        //         ? handlerConfig.cherepaha.companies[calculation.companyId].url
-        //         : "unknown",
-        //     serviceProduct: {
-        //       connectOrCreate: {
-        //         where: {
-        //           id: "",
-        //         },
-        //         create: {
-        //           ...calculation.serviceProduct,
-        //         },
-        //       },
-        //     },
-        //   },
-        // });
-
         const serviceProduct = { ...calculation.serviceProduct, id };
 
         const serviceProductCreate = `INSERT INTO "ServiceProduct" (${Object.keys(serviceProduct)
