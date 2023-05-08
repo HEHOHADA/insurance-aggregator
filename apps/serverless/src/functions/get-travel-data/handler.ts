@@ -1,12 +1,13 @@
+import type { Handler } from "aws-lambda";
 import { initDatabaseConnection } from "server-libs";
 
 import type { CherepahaResponse } from "../../lib";
-import { handlerConfig, middyfy } from "../../lib";
+import { handlerConfig } from "../../lib";
 import { countries } from "../../lib/countries";
 
 const prisma = initDatabaseConnection();
 
-const handler = async () => {
+const handler: Handler = async (event, context, callback) => {
   try {
     console.log("start");
     const now = new Date();
@@ -65,16 +66,17 @@ const handler = async () => {
       }),
     );
 
-    return {
+    callback(null, {
       statusCode: 200,
       body: "Success!",
-    };
-  } catch (e) {
-    console.error(e);
+    });
+  } catch (error) {
+    console.error(error);
+    callback(null, error);
+  } finally {
+    console.log("end of get-travel-data handler");
+    prisma.$disconnect();
   }
-
-  console.log("end of get-travel-data handler");
-  prisma.$disconnect();
 };
 
-export const main = middyfy(handler);
+export const main = handler;

@@ -13,7 +13,7 @@ const serverlessConfiguration: AWS = {
   plugins: ["serverless-esbuild", "serverless-offline"],
   provider: {
     name: "aws",
-    runtime: "nodejs16.x",
+    runtime: "nodejs18.x",
     stage: "dev",
     region: "eu-north-1",
     environment: {
@@ -31,6 +31,7 @@ const serverlessConfiguration: AWS = {
       process.env.NODE_ENV === "production"
         ? "**/libquery_engine-rhel-openssl-1.0.x.so.node"
         : "**/libquery_engine-darwin-arm64.dylib.node",
+      "!**node_modules/**",
     ],
   },
   custom: {
@@ -42,7 +43,7 @@ const serverlessConfiguration: AWS = {
       minify: true,
       sourcemap: false,
       exclude: ["aws-sdk"],
-      target: "node16",
+      target: "node18",
       define: { ["require.resolve"]: undefined as any },
       platform: "node",
       concurrency: 10,
