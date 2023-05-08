@@ -76,7 +76,7 @@ const handler: Handler = async (event, context, callback) => {
         //   },
         // });
 
-        const serviceProduct = { ...calculation.serviceProduct, id: uuidv4() };
+        const serviceProduct = { ...calculation.serviceProduct, id };
 
         const serviceProductCreate = `INSERT INTO "ServiceProduct" (${Object.keys(serviceProduct)
           .map((key) => `"${key}"`)
