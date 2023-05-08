@@ -1,8 +1,6 @@
+export const countriesGroup = ["all-world"];
+
 export const countries = [
-  "all-world",
-  "world-no-russia",
-  "ocean",
-  "schengen",
   "albania",
   "argentina",
   "armenia",

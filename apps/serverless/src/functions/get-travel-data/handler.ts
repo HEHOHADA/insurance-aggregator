@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import type { CherepahaResponse } from "../../lib";
 import { handlerConfig } from "../../lib";
-import { countries } from "../../lib/countries";
+import { countries, countriesGroup } from "../../lib/countries";
 
 const client = new ServerlessClient({
   connectionString: process.env.DATABASE_URL || "",
@@ -20,11 +20,13 @@ const handler: Handler = async (event, context, callback) => {
     const dateStart = now.toISOString().split("T")[0];
 
     const country = countries[Math.floor(Math.random() * countries.length)];
+    const countryGroup = countriesGroup[Math.floor(Math.random() * countriesGroup.length)];
 
     const currentParams = {
       ...handlerConfig.cherepaha.params,
       dateStart,
-      countryGroups: [country],
+      countryGroups: [countryGroup],
+      countries: [country],
     };
 
     const response = await fetch(handlerConfig.cherepaha.url, {
@@ -34,11 +36,14 @@ const handler: Handler = async (event, context, callback) => {
       },
       body: JSON.stringify(currentParams),
     });
+
     const data = (await response.json()) as CherepahaResponse;
+
+    console.log(data);
 
     await Promise.all(
       data.calculations.map(async (calculation) => {
-        console.log("data.calculations.forEach", calculation.serviceProduct);
+        console.log("data.calculations.forEach", calculation);
         const id = uuidv4();
         // await prisma.travel.create({
         //   data: {
@@ -71,6 +76,17 @@ const handler: Handler = async (event, context, callback) => {
         //   },
         // });
 
+        const serviceProduct = { ...calculation.serviceProduct, id: uuidv4() };
+
+        const serviceProductCreate = `INSERT INTO "ServiceProduct" (${Object.keys(serviceProduct)
+          .map((key) => `"${key}"`)
+          .join(", ")})
+                                      VALUES (${Object.keys(serviceProduct).map(
+                                        (_, i) => `$${i + 1}`,
+                                      )})`;
+
+        await client.query(serviceProductCreate, Object.values(serviceProduct));
+
         await client.query(
           `INSERT INTO "Travel" ("price", "currency", "companyId", "startDate", "endDate",
                                  "createdAt", "approved", "destination", "url", "serviceProductId",
@@ -92,15 +108,6 @@ const handler: Handler = async (event, context, callback) => {
             uuidv4(),
           ],
         );
-        const serviceProduct = { ...calculation.serviceProduct, id: uuidv4() };
-        const serviceProductCreate = `INSERT INTO "ServiceProduct" (${Object.keys(serviceProduct)
-          .map((key) => `"${key}"`)
-          .join(", ")})
-                                      VALUES (${Object.keys(serviceProduct).map(
-                                        (_, i) => `$${i + 1}`,
-                                      )})`;
-
-        await client.query(serviceProductCreate, Object.values(calculation.serviceProduct));
       }),
     );
     void client.end().catch(console.log);
