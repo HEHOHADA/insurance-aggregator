@@ -35,9 +35,7 @@ export const TravelCard: Component<TravelCardProps> = (props) => {
     <Card
       name={props.travel.company.name}
       price={`${props.travel.priceRub} RUB`}
-      onClick={props.onBlock}
       link={props.travel.company.url}
-      blockButton
       color={props.travel.company.colorHexCode}
     >
       <Collapse title={<span>{optionsCount} Options allowed</span>}>

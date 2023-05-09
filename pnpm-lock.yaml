@@ -161,10 +161,20 @@ importers:
 
   apps/web:
     specifiers:
+      '@effector/redux-devtools-adapter': ^0.1.5
+      '@types/node': ^18.15.11
+      atomic-router: ^0.8.0
+      atomic-router-solid: ^0.8.0
       autoprefixer: ^10.4.13
       config: workspace:*
+      cssnano: ^6.0.1
       daisyui: ^2.51.5
+      effector: ^22.8.2
+      effector-solid: ^0.22.7
       eslint-config-custom: workspace:*
+      history: ^5.3.0
+      lib: workspace:*
+      patronum: ^1.18.0
       postcss: ^8.4.21
       prettier-config-custom: workspace:*
       solid-js: ^1.6.10
@@ -176,19 +186,29 @@ importers:
       vite-plugin-solid: ^2.5.0
       vite-tsconfig-paths: ^4.0.8
     dependencies:
-      config: link:../../packages/config
+      atomic-router: 0.8.0_q272z7bki54z5gfv7mzjd57ytm
+      atomic-router-solid: 0.8.0_agu7tikfcgbjxzkisrej2d37mu
       daisyui: 2.51.5_j7yt3jd32cwenjqavrrga47yr4
+      effector: 22.8.2
+      effector-solid: 0.22.7_h6oz6hufgp7vapl7utsn647g4a
+      history: 5.3.0
+      patronum: 1.18.0_effector@22.8.2
       solid-js: 1.7.0
       ui: link:../../packages/ui
     devDependencies:
+      '@effector/redux-devtools-adapter': 0.1.5_effector@22.8.2
+      '@types/node': 18.15.11
       autoprefixer: 10.4.14_postcss@8.4.21
+      config: link:../../packages/config
+      cssnano: 6.0.1_postcss@8.4.21
       eslint-config-custom: link:../../packages/eslint-config-custom
+      lib: link:../../packages/lib
       postcss: 8.4.21
       prettier-config-custom: link:../../packages/prettier-config-custom
       tailwindcss: 3.3.2
       tsconfig: link:../../packages/tsconfig
       typescript: 5.0.2
-      vite: 4.2.1
+      vite: 4.2.1_@types+node@18.15.11
       vite-plugin-solid: 2.6.1_solid-js@1.7.0+vite@4.2.1
       vite-tsconfig-paths: 4.0.8_bi7wsi5xkno72wnymskyicz4pu
 
@@ -6418,6 +6438,14 @@ packages:
     resolution: {integrity: sha512-TX+cz8Jk+ta7IvRy2FAej8rdlbrP0+uBIkP/5DTODez/AuL/vSb30KuAdDxGVREXzn8QfAiu5mJYJ1XjbOhEPA==}
     dev: true
 
+  /patronum/1.18.0_effector@22.8.2:
+    resolution: {integrity: sha512-2SxZTLHXw56dXvns41YksVD030shnewef+4Gak2RSYdgEBGdCKCYYNfegsvoW8MWwjQxUZpp1Mgos8a3pXipCQ==}
+    peerDependencies:
+      effector: ^22.1.2
+    dependencies:
+      effector: 22.8.2
+    dev: false
+
   /peek-readable/4.1.0:
     resolution: {integrity: sha512-ZI3LnwUv5nOGbQzD9c2iDG6toheuXSZP5esSHBjopsXH4dg19soufvpUGA3uohi5anFtGb2lhAVdHzH6R/Evvg==}
     engines: {node: '>=8'}
@@ -8575,39 +8603,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
-    dev: true
-
-  /vite/4.2.1:
-    resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.17.14
-      postcss: 8.4.21
-      resolve: 1.22.1
-      rollup: 3.20.2
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /vite/4.2.1_@types+node@18.15.11:

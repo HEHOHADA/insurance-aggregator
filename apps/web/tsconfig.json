@@ -3,6 +3,11 @@
   "include": [
     "."
   ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": "./src",
+  },
   "exclude": [
     "dist",
     "build",

@@ -11,21 +11,31 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "vite": "^4.1.1",
+    "@effector/redux-devtools-adapter": "^0.1.5",
+    "@types/node": "^18.15.11",
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.3.2",
-    "vite-plugin-solid": "^2.5.0",
-    "tsconfig": "workspace:*",
+    "config": "workspace:*",
+    "cssnano": "^6.0.1",
     "eslint-config-custom": "workspace:*",
+    "lib": "workspace:*",
+    "postcss": "^8.4.21",
     "prettier-config-custom": "workspace:*",
+    "tailwindcss": "^3.3.2",
+    "tsconfig": "workspace:*",
     "typescript": "^5.0.2",
+    "vite": "^4.1.1",
+    "vite-plugin-solid": "^2.5.0",
     "vite-tsconfig-paths": "^4.0.8"
   },
   "dependencies": {
-    "solid-js": "^1.6.10",
+    "atomic-router": "^0.8.0",
+    "atomic-router-solid": "^0.8.0",
     "daisyui": "^2.51.5",
-    "ui": "workspace:*",
-    "config": "workspace:*"
+    "effector": "^22.8.2",
+    "effector-solid": "^0.22.7",
+    "history": "^5.3.0",
+    "solid-js": "^1.6.10",
+    "patronum": "^1.18.0",
+    "ui": "workspace:*"
   }
 }
