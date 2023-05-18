@@ -1,5 +1,7 @@
 import type { ServiceProduct } from "database";
 
+import { makeRandomIntInRange } from "../functions/get-travel-data/handler";
+
 export type CherepahaResponse = {
   calculations: {
     productId: number;
@@ -28,13 +30,13 @@ export type CherepahaResponse = {
   }[];
 };
 
-export const handlerConfig = {
+export const handlerConfig = () => ({
   cherepaha: {
     url: "https://www.cherehapa.ru/api/travel/calculate",
     method: "POST",
     params: {
       dateStart: "$.context.dateStart",
-      insuredDays: 7,
+      insuredDays: makeRandomIntInRange(1, 14),
       currency: "USD",
       services: { medicine: 50000, covid: 0, urgentStomatology: 1, foreign: 1 },
       tourists: [{ age: 18 }],
@@ -144,4 +146,4 @@ export const handlerConfig = {
       },
     ],
   },
-};
+});

@@ -4,9 +4,9 @@ import { Link, Logo } from "ui";
 
 export const Header: Component = () => {
   return (
-    <header class="bg-white shadow">
+    <header class="bg-white dark:bg-bg shadow">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="w-full py-6 flex items-center justify-between border-b border-gray-200 lg:border-none">
+        <div class="w-full py-6 flex items-center justify-between border-b border-gray-200 dark:border-gray-800 lg:border-none">
           <div class="flex items-center">
             <Link href="/" class="bg-transparent">
               <Logo />

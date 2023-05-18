@@ -8,7 +8,13 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        bg: "#0e1426",
+        bgLight: "#1a1f38",
+        text: "#adb7d8",
+      },
+    },
   },
   daisyui: {
     themes: false,

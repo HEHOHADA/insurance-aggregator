@@ -11,7 +11,7 @@ export const functions: AWS["functions"] = {
           rate: ["rate(5 minutes)"],
         },
         http: {
-          method: "GET",
+          method: "POST",
           path: "get-travel-data",
           cors: true,
         },

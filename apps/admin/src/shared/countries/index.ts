@@ -1,4 +1,4 @@
-export const countries = [
+const localCountries = [
   { name: "Afghanistan", code: "AF" },
   { name: "Åland Islands", code: "AX" },
   { name: "Albania", code: "AL" },
@@ -243,3 +243,44 @@ export const countries = [
   { name: "Zambia", code: "ZM" },
   { name: "Zimbabwe", code: "ZW" },
 ];
+
+export const countriesGroup = ["all-world", "schengen"];
+
+export const countriesBackend = [
+  "albania",
+  "argentina",
+  "armenia",
+  "australia",
+  "austria",
+  "azerbaijan",
+  "bahrain",
+  "belarus",
+  "belgium",
+  "china",
+  "france",
+  "georgia",
+  "germany",
+  "greece",
+  "india",
+  "indonesia",
+  "iran",
+  "ireland",
+  "usa",
+  "italy",
+  "japan",
+  "kazakhstan",
+  "kyrgyzstan",
+  "latvia",
+  "lithuania",
+  "malaysia",
+  "mexico",
+  "moldova",
+  "montenegro",
+  "netherlands",
+  "new-zealand",
+  "norway",
+];
+
+export const countries = localCountries.filter((country) =>
+  countriesBackend.includes(country.name.toLowerCase()),
+);

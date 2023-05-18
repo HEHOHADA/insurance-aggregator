@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+#root {
+  @apply m-0 h-max bg-[#f3f7f9] p-0 text-base leading-[1.5] text-black;
+}

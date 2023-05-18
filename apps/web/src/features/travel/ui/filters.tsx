@@ -1,7 +1,7 @@
 import { useStoreMap } from "effector-solid";
 import type { Component } from "solid-js";
 
-import { Filter, Select } from "ui";
+import { Filter, Input, Select } from "ui";
 
 import { countries } from "../../../shared/countries";
 import { $form, setField } from "../index";

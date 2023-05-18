@@ -1,8 +1,6 @@
 import { createEffect } from "effector";
 
-import { createOid } from "../lib/oid";
-import { wait } from "../lib/wait";
-import { mockTravels, companies } from "./fake";
+import type { mockTravels, companies } from "./fake";
 import { requestInternalFx } from "./request";
 
 export type Travel = (typeof mockTravels)[number] & {
@@ -10,24 +8,25 @@ export type Travel = (typeof mockTravels)[number] & {
   company: (typeof companies)[number];
 };
 
-export const travelLoadFx = createEffect<{ params: any }, Travel[], void>(async ({ params }) => {
-  // const response = await requestInternalFx({
-  //   path: "/travel",
-  //   method: "GET",
-  //   query: params,
-  // });
-
-  await wait(700);
-
-  return mockTravels.map((data) => {
-    const company = companies.find((company) => company.id === data.companyId);
-
-    return {
-      ...data,
-      company,
-      id: createOid(),
+export const travelLoadFx = createEffect<
+  {
+    params: {
+      country?: string;
+      from?: number | string;
+      to?: number | string;
+      approved?: boolean;
     };
+  },
+  Travel[],
+  void
+>(async ({ params }) => {
+  const response = await requestInternalFx({
+    path: "/travel",
+    method: "GET",
+    query: params,
   });
+
+  return response.body as Travel[];
 });
 
 export const banTravelFx = createEffect<{ id: string }, void, void>(async ({ id }) => {

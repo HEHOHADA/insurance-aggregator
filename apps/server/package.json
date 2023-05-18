@@ -12,7 +12,8 @@
     "fastify-plugin": "^4.5.0",
     "prismjs": "^1.29.0",
     "server-libs": "workspace:*",
-    "database": "workspace:*"
+    "database": "workspace:*",
+    "dayjs": "^1.11.7"
   },
   "scripts": {
     "generate": "npx prisma generate",

@@ -10,7 +10,18 @@ export type Travel = (typeof mockTravels)[number] & {
   company: (typeof companies)[number];
 };
 
-export const travelLoadFx = createEffect<{ params: any }, Travel[], void>(async ({ params }) => {
+export const travelLoadFx = createEffect<
+  {
+    params: {
+      country?: string;
+      from?: string;
+      to?: string;
+      approved?: boolean;
+    };
+  },
+  Travel[],
+  void
+>(async ({ params }) => {
   // const response = await requestInternalFx({
   //   path: "/travel",
   //   method: "GET",

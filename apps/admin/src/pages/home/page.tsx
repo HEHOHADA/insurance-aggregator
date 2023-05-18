@@ -16,12 +16,12 @@ export function HomePage() {
     <div class="h-screen overflow-y-hidden">
       <Header />
       <div class="mx-auto flex h-full max-w-7xl">
-        <aside class="w-1/4 bg-white shadow">
+        <aside class="w-1/4 bg-white shadow dark:bg-bgLight">
           <Filters />
         </aside>
         <main class="max-h-[800px] w-3/4 overflow-auto px-4 py-6">
           <div>
-            <h2 class="text-2xl font-medium text-gray-900">Search Result</h2>
+            <h2 class="text-2xl font-medium">Search Result</h2>
             <div class="mt-6 grid grid-cols-1 gap-4">
               <Show when={!isLoading()} fallback={<For each={SKELETON_FILLED}>{SkeletonCard}</For>}>
                 <For each={items()}>

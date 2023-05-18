@@ -13,13 +13,13 @@ export function HomePage() {
 
   return (
     <div class="h-screen overflow-y-hidden">
-      <aside class="bg-white shadow">
+      <aside class="shadow">
         <Filters />
       </aside>
       <div class="mx-auto flex h-full">
         <main class="max-h-[800px] overflow-auto px-4 py-6 w-full">
           <div>
-            <h2 class="text-2xl font-medium text-gray-900">Search Result</h2>
+            <h2 class="text-2xl font-medium">Search Result</h2>
             <div class="mt-6 grid grid-cols-1 gap-4">
               <Show when={!isLoading()} fallback={<For each={SKELETON_FILLED}>{SkeletonCard}</For>}>
                 <For each={items()}>

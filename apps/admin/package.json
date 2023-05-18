@@ -12,6 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@effector/redux-devtools-adapter": "^0.1.5",
+    "clsx": "^1.2.1",
     "@types/node": "^18.15.11",
     "autoprefixer": "^10.4.13",
     "config": "workspace:*",

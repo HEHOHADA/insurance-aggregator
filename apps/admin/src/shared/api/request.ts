@@ -11,7 +11,7 @@ export interface Request {
   method: string;
   // eslint-disable-next-line @typescript-eslint/ban-types
   body?: object | null | void;
-  query?: Record<string, string>;
+  query?: Record<string, any>;
   headers?: Record<string, string>;
   cookies?: string;
 }
@@ -27,7 +27,7 @@ export const requestInternalFx = createEffect<Request, Answer, Answer>();
 
 export type ResponseResult<Data> = string | Record<string, Data> | null;
 
-export const API_PREFIX = import.meta.env.CLIENT_BACKEND_URL ?? `/api/internal`;
+export const API_PREFIX = import.meta.env.CLIENT_BACKEND_URL ?? `/api`;
 
 async function requestClient({ path, method, ...params }: Request) {
   const headers = new Headers(params.headers);

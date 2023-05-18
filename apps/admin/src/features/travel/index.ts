@@ -2,6 +2,8 @@ import { attach, createEvent, createStore, sample } from "effector";
 import { travelApi } from "shared/api";
 import type { Travel } from "shared/api";
 
+import { countriesBackend } from "../../shared/countries";
+
 const travelLoadFx = attach({ effect: travelApi.travelLoadFx });
 const banTravelFx = attach({ effect: travelApi.banTravelFx });
 
@@ -12,8 +14,8 @@ export const $travels = createStore<Travel[]>([])
       if (travel.id === params.id) {
         return {
           ...travel,
-          approved: false,
-        };
+          approved: true,
+        } as Travel;
       }
 
       return travel;
@@ -22,10 +24,31 @@ export const $travels = createStore<Travel[]>([])
 
 export const $isLoading = travelLoadFx.pending;
 
-export const loadTravel = createEvent<{ params: any }>();
+export const loadTravel = createEvent<{
+  params: {
+    country?: string;
+    from?: number | string;
+    to?: number | string;
+    approved?: boolean;
+  };
+}>();
 
 sample({
   clock: loadTravel,
+  fn: ({ params }) => {
+    const { country, from = new Date().toISOString().split("T")[0] } = params;
+    const newCountry = country
+      ? countriesBackend.find((backend) => backend === country.toLowerCase())
+      : undefined;
+
+    return {
+      params: {
+        ...params,
+        ...(newCountry ? { country: newCountry } : {}),
+        from,
+      },
+    };
+  },
   target: travelLoadFx,
 });
 
@@ -47,7 +70,7 @@ export const setField = createEvent<{
 export const resetForm = createEvent();
 export const sendForm = createEvent();
 
-export const $form = createStore({})
+export const $form = createStore<{ from?: string; country?: string }>({})
   .on(setField, (s, { key, value }) => ({
     ...s,
     [key]: value,

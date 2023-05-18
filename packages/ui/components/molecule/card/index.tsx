@@ -17,6 +17,7 @@ export type CardProps = {
   color: string;
   blockButton?: boolean;
   children: JSX.Element;
+  class?: string;
 };
 
 export const Card: Component<CardProps> = (props) => {
@@ -25,7 +26,7 @@ export const Card: Component<CardProps> = (props) => {
   };
 
   return (
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class={clsx("rounded-lg shadow-lg overflow-hidden", props.class)}>
       <div class="flex flex-col gap-2 p-4">
         <a
           href={props.link}

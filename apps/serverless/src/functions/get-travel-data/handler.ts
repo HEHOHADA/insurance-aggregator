@@ -11,9 +11,22 @@ const client = new ServerlessClient({
   ssl: true,
 });
 
+export const makeRandomIntInRange = (minValue: number, maxValue: number) => {
+  const min = Math.ceil(minValue);
+  const max = Math.floor(maxValue);
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 const handler: Handler = async (event, context, callback) => {
   try {
     console.log("start");
+
+    if (event.body) {
+      const body = JSON.parse(event.body);
+
+      console.log(body);
+    }
     await client.connect();
 
     const now = new Date();
@@ -21,16 +34,21 @@ const handler: Handler = async (event, context, callback) => {
 
     const country = countries[Math.floor(Math.random() * countries.length)];
     const countryGroup = countriesGroup[Math.floor(Math.random() * countriesGroup.length)];
+    const config = handlerConfig();
 
-    const currentParams = {
-      ...handlerConfig.cherepaha.params,
-      dateStart,
-      countryGroups: [countryGroup],
-      countries: [country],
-    };
+    const currentParams = event.body
+      ? JSON.parse(event.body)
+      : {
+          ...config.cherepaha.params,
+          dateStart,
+          countryGroups: [countryGroup],
+          countries: [
+            Math.random() > 0.5 && countryGroup !== "shengen" ? country : undefined,
+          ].filter(Boolean),
+        };
 
-    const response = await fetch(handlerConfig.cherepaha.url, {
-      method: handlerConfig.cherepaha.method,
+    const response = await fetch(config.cherepaha.url, {
+      method: config.cherepaha.method,
       headers: {
         "Content-Type": "application/json",
       },
@@ -44,8 +62,9 @@ const handler: Handler = async (event, context, callback) => {
     await Promise.all(
       data.calculations.map(async (calculation) => {
         console.log("data.calculations.forEach", calculation);
+        const { ...serv } = calculation.serviceProduct;
         const id = uuidv4();
-        const serviceProduct = { ...calculation.serviceProduct, id };
+        const serviceProduct = { ...serv, id };
 
         const serviceProductCreate = `INSERT INTO "ServiceProduct" (${Object.keys(serviceProduct)
           .map((key) => `"${key}"`)
@@ -65,13 +84,13 @@ const handler: Handler = async (event, context, callback) => {
             calculation.priceRub,
             "RUB",
             calculation.companyId,
-            new Date(dateStart),
-            new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000),
+            new Date(currentParams.dateStart),
+            new Date(now.getTime() + currentParams.insuredDays * 24 * 60 * 60 * 1000),
             now,
             false,
-            country,
-            calculation.companyId in handlerConfig.cherepaha.companies
-              ? handlerConfig.cherepaha.companies[calculation.companyId].url
+            currentParams.countries[9],
+            calculation.companyId in config.cherepaha.companies
+              ? config.cherepaha.companies[calculation.companyId].url
               : "unknown",
             id,
             uuidv4(),

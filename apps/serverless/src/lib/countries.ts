@@ -1,4 +1,4 @@
-export const countriesGroup = ["all-world"];
+export const countriesGroup = ["all-world", "shengen"] as const;
 
 export const countries = [
   "albania",

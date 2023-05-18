@@ -3,7 +3,7 @@
 
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+  binaryTargets = ["native", "rhel-openssl-1.1.x"]
 }
 
 generator erd {
@@ -22,7 +22,7 @@ model Travel {
   id               String         @id @default(uuid()) @db.Uuid
   createdAt        DateTime       @default(now())
   url              String
-  destination      String
+  destination      String?
   startDate        DateTime
   endDate          DateTime
   price            Float
@@ -47,40 +47,50 @@ model Company {
 model ServiceProduct {
   id                       String   @id @default(uuid()) @db.Uuid
   Travel                   Travel[]
-  abroad                   Int
-  abroadTransportation     Int
-  accident                 Int
-  allergyArresting         Int
-  ambulatoryCare           Int
-  auto                     Int
-  aviaCargo                Int
-  childrenReturn           Int
-  chronicArresting         Int
-  civilLiability           Int
+  abroad                   Int?
+  abroadTransportation     Int?
+  accident                 Int?
+  allergyArresting         Int?
+  ambulatoryCare           Int?
+  auto                     Int?
+  aviaCargo                Int?
+  childrenReturn           Int?
+  chronicArresting         Int?
+  civilLiability           Int?
   covid                    Int?
-  deathRepatriation        Int
-  delayCargo               Int
-  denge                    Int
-  divingChamber            Int
-  doctorCall               Int
-  doctorTransportation     Int
-  drugRefund               Int
-  education                Int
-  foreign                  Int
-  hospitalTreatment        Int
-  insuredEscortReturn      Int
-  insuredLiving            Int
-  insuredReturn            Int
-  medicine                 Int
-  multipolicy              Int
-  office                   Int
-  pcr                      Int
-  phoneRefund              Int
-  pregnancy                Int
-  relativeIllReturn        Int
-  searchActivities         Int
-  sunburnAssistance        Int
-  thirdPartyTransportation Int
-  urgentStomatology        Int
-  work                     Int
+  deathRepatriation        Int?
+  delayCargo               Int?
+  denge                    Int?
+  divingChamber            Int?
+  doctorCall               Int?
+  doctorTransportation     Int?
+  drugRefund               Int?
+  education                Int?
+  foreign                  Int?
+  hospitalTreatment        Int?
+  insuredEscortReturn      Int?
+  insuredLiving            Int?
+  insuredReturn            Int?
+  medicine                 Int?
+  multipolicy              Int?
+  office                   Int?
+  pcr                      Int?
+  phoneRefund              Int?
+  pregnancy                Int?
+  relativeIllReturn        Int?
+  searchActivities         Int?
+  sunburnAssistance        Int?
+  thirdPartyTransportation Int?
+  urgentStomatology        Int?
+  work                     Int?
+  disasterAssistance       Int?
+  terrorAssistance         Int?
+  document                 Int?
+  insuredEscortLiving      Int?
+  alcoholAssistance      Int?
+  oncologyAssistance      Int?
+  legal Int?
+  observation Int?
+  regularDelay Int?
+  hotelCargo Int?
 }

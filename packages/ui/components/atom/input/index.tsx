@@ -9,7 +9,7 @@ export type InputProps = JSX.HTMLAttributes<HTMLInputElement> & {
   name?: string;
   containerClass?: string;
   labelClass?: string;
-};
+} & Record<string, any>;
 
 export const Input: Component<InputProps> = (props) => {
   const [used, other] = splitProps(props, [

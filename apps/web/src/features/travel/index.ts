@@ -23,7 +23,7 @@ export const $travels = createStore<Travel[]>([])
 
 export const $isLoading = travelLoadFx.pending;
 
-export const loadTravel = createEvent<{ params: any }>();
+export const loadTravel = createEvent<{ country: string }>();
 
 sample({
   clock: loadTravel,

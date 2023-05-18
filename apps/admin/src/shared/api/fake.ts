@@ -110,6 +110,7 @@ export const mockTravels = [
         name: "Class Assistance",
       },
     ],
+    approved: true,
     matchRating: 0.8882,
     matchDetails: {
       totalServices: 23,
