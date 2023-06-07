@@ -16,22 +16,24 @@ export type One = {
   type: "one";
 };
 
+type Value = string;
+
 export type Scrapping = {
   url: Selector;
-  travel: TravelData;
+  travel: TravelDataSelectors;
   company: {
-    name: Selector;
-    logo: Selector;
-    color: Selector;
-    url: Selector;
+    name: Selector | string;
+    logo: Selector | string;
+    color: Selector | string;
+    url: Selector | string;
   };
   type: Paging | InfinityScroll | One;
-  params: {
-    [key: string]: Selector;
+  filters: {
+    [key: string]: [Selector, Value];
   };
 };
 
-type TravelData = {
+export type TravelDataSelectors = {
   serviceProduct: Record<string, Selector>;
   price: {
     currency: Selector;

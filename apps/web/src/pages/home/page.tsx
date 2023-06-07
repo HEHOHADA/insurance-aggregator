@@ -3,7 +3,7 @@ import { For, Show } from "solid-js";
 
 import { SkeletonCard } from "ui";
 
-import { $isLoading, $travels, banTravel } from "../../features";
+import { $isLoading, $travels } from "../../features";
 import { TravelCard, Filters } from "../../features/travel/ui";
 
 const SKELETON_FILLED = new Array(5).fill(null);
@@ -22,9 +22,7 @@ export function HomePage() {
             <h2 class="text-2xl font-medium">Search Result</h2>
             <div class="mt-6 grid grid-cols-1 gap-4">
               <Show when={!isLoading()} fallback={<For each={SKELETON_FILLED}>{SkeletonCard}</For>}>
-                <For each={items()}>
-                  {(item) => <TravelCard travel={item} onBlock={(id) => banTravel({ id })} />}
-                </For>
+                <For each={items()}>{(item) => <TravelCard travel={item} />}</For>
               </Show>
             </div>
           </div>

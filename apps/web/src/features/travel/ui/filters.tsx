@@ -11,6 +11,7 @@ export const Filters: Component = () => {
     <div class="px-4 py-6">
       <div class="flex gap-6">
         <CountryFilter />
+        <DateFilter />
       </div>
     </div>
   );
@@ -26,29 +27,51 @@ const CountryFilter = () => {
     store: $form,
     keys: ["country"],
     fn: (store, [key]) => {
-      const fieldValue = store[key] as string[];
+      const fieldValue = store[key];
 
-      if (fieldValue) {
-        return fieldValue?.map((field) => options.find((option) => field === option.value));
-      }
-
-      return [];
+      return fieldValue;
     },
   });
 
   return (
     <Filter text="Country" class="w-full">
       <Select
-        isMulti
         value={fieldValue()}
         onChange={(values) => {
           setField({
             key: "country",
-            value: values.map((value) => value.value),
+            value: values.value,
           });
         }}
         options={options}
         placeholder="Select country"
+      />
+    </Filter>
+  );
+};
+
+const DateFilter = () => {
+  const fieldValue = useStoreMap({
+    store: $form,
+    keys: ["from"],
+    fn: (store, [key]) => {
+      const fieldValue = store[key];
+
+      return fieldValue;
+    },
+  });
+
+  return (
+    <Filter text="From Date">
+      <Input
+        type="date"
+        value={fieldValue()}
+        onChange={(event) => {
+          setField({
+            key: "from",
+            value: event.currentTarget.value,
+          });
+        }}
       />
     </Filter>
   );

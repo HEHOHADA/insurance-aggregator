@@ -8,7 +8,7 @@ import type { Travel } from "../../../shared/api";
 
 export type TravelCardProps = {
   travel: Travel;
-  onBlock: (id: string) => void;
+  onBlock?: (id: string) => void;
 };
 
 export const TravelCard: Component<TravelCardProps> = (props) => {
@@ -34,7 +34,8 @@ export const TravelCard: Component<TravelCardProps> = (props) => {
   return (
     <Card
       name={props.travel.company.name}
-      price={`${props.travel.priceRub} RUB`}
+      price={`${props.travel.price} RUB`}
+      blockButton={false}
       link={props.travel.company.url}
       color={props.travel.company.colorHexCode}
     >

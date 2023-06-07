@@ -21,9 +21,11 @@ export type CardProps = {
 };
 
 export const Card: Component<CardProps> = (props) => {
-  const onClick = () => {
-    props.onClick?.(props.id);
-  };
+  const onClick = props.onClick
+    ? () => {
+        props.onClick(props.id);
+      }
+    : undefined;
 
   return (
     <div class={clsx("rounded-lg shadow-lg overflow-hidden", props.class)}>
