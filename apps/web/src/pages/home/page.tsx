@@ -22,7 +22,9 @@ export function HomePage() {
             <h2 class="text-2xl font-medium">Search Result</h2>
             <div class="mt-6 grid grid-cols-1 gap-4">
               <Show when={!isLoading()} fallback={<For each={SKELETON_FILLED}>{SkeletonCard}</For>}>
-                <For each={items()}>{(item) => <TravelCard travel={item} />}</For>
+                <Show when={items().length} fallback={<span>Not found</span>}>
+                  <For each={items()}>{(item) => <TravelCard travel={item} />}</For>
+                </Show>
               </Show>
             </div>
           </div>

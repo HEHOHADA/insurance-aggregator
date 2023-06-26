@@ -20,10 +20,18 @@ export const loadTravel = createEvent<{
   };
 }>();
 
+export const removeEmptyValues = <T extends Record<string, any>>(obj: T): T => {
+  Object.keys(obj).forEach((k) => !obj[k] && delete obj[k]);
+
+  return obj;
+};
+
 sample({
   clock: loadTravel,
   fn: ({ params }) => {
+    removeEmptyValues(params);
     const { country, from = new Date().toISOString().split("T")[0] } = params;
+
     const newCountry = country
       ? countriesBackend.find((backend) => backend === country.toLowerCase())
       : undefined;

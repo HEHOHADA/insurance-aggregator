@@ -29,35 +29,49 @@ export type ResponseResult<Data> = string | Record<string, Data> | null;
 
 export const API_PREFIX = import.meta.env.CLIENT_BACKEND_URL ?? `/api`;
 
+export const removeEmptyValues = <T extends Record<string, any>>(obj: T): T => {
+  Object.keys(obj).forEach((k) => !obj[k] && delete obj[k]);
+
+  return obj;
+};
+
 async function requestClient({ path, method, ...params }: Request) {
-  const headers = new Headers(params.headers);
+  try {
+    const headers = new Headers(params.headers);
 
-  contentDefault(headers, "application/json; charset=utf-8");
+    contentDefault(headers, "application/json; charset=utf-8");
+    removeEmptyValues(params?.query || {});
+    const query = queryToString(params?.query);
 
-  const query = queryToString(params.query);
-  const body =
-    contentIs(headers, "application/json") && params.body ? JSON.stringify(params.body) : undefined;
+    const body =
+      contentIs(headers, "application/json") && params.body
+        ? JSON.stringify(params.body || {})
+        : undefined;
 
-  const response = await fetch(`${API_PREFIX}${path}${query}`, {
-    method,
-    headers,
-    body,
-    credentials: "same-origin",
-  });
+    const response = await fetch(`${API_PREFIX}${path}${query}`, {
+      method,
+      headers,
+      body,
+      credentials: "same-origin",
+    });
 
-  const answer = await getResponseAnswer(response);
+    const answer = await getResponseAnswer(response);
 
-  const responder = {
-    ok: response.ok,
-    body: answer,
-    status: response.status,
-    headers: toObject(response.headers),
-  };
+    const responder = {
+      ok: response.ok,
+      body: answer,
+      status: response.status,
+      headers: toObject(response.headers),
+    };
 
-  if (response.ok) {
-    return responder;
+    if (response.ok) {
+      return responder;
+    }
+    throw responder;
+  } catch (error) {
+    console.log("error", error);
+    throw error;
   }
-  throw responder;
 }
 
 /**

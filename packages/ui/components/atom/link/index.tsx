@@ -8,12 +8,14 @@ export type LinkProps = {
   children: JSX.Element | string;
   activeClassName?: string;
   class?: string;
+  target?: string;
 };
 
 export const Link: Component<LinkProps> = (props) => {
   return (
     <RouterLink
       to={props.href}
+      target={props.target}
       activeClass={clsx(props.activeClassName, "bg-blue-500")}
       class={clsx(
         props.class,

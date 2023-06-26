@@ -66,12 +66,12 @@ export function Select<T extends Option, M extends boolean = false>(props: Selec
   };
 
   const handleRemoveOption = (option) => {
-    if (props.isMulti) {
-      const newSelected = (selected() as T[]).filter((s) => s.value !== option.value);
+    const newSelected = props.isMulti
+      ? (selected() as T[]).filter((s) => s.value !== option.value)
+      : undefined;
 
-      setSelected(newSelected as any);
-      mergedProps.onChange(newSelected as any);
-    }
+    setSelected(newSelected as any);
+    mergedProps.onChange(newSelected as any);
   };
 
   const selectedOption = () => {

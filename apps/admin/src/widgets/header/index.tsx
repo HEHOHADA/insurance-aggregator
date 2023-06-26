@@ -12,7 +12,11 @@ export const Header: Component = () => {
               <Logo />
             </Link>
             <div class="hidden ml-10 space-x-8 lg:block">
-              <Link href="/" class="bg-gray-500 text-white px-2 py-2">
+              <Link
+                href="http://localhost:3001"
+                target="_blank"
+                class="bg-gray-500 text-white px-2 py-2"
+              >
                 App
               </Link>
             </div>

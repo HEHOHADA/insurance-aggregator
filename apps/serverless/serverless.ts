@@ -26,13 +26,6 @@ const serverlessConfiguration: AWS = {
   functions: { ...functions },
   package: {
     individually: true,
-    // patterns: [
-    //   "**/*.prisma",
-    //   process.env.NODE_ENV === "production"
-    //     ? "**/libquery_engine-rhel-openssl-1.0.x.so.node"
-    //     : "**/libquery_engine-darwin-arm64.dylib.node",
-    //   "!**node_modules/**",
-    // ],
   },
   custom: {
     ["serverless-offline"]: {

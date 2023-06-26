@@ -29,10 +29,17 @@ export type ResponseResult<Data> = string | Record<string, Data> | null;
 
 export const API_PREFIX = import.meta.env.CLIENT_BACKEND_URL ?? `/api`;
 
+export const removeEmptyValues = <T extends Record<string, any>>(obj: T): T => {
+  Object.keys(obj).forEach((k) => !obj[k] && delete obj[k]);
+
+  return obj;
+};
+
 async function requestClient({ path, method, ...params }: Request) {
   const headers = new Headers(params.headers);
 
   contentDefault(headers, "application/json; charset=utf-8");
+  removeEmptyValues(params.query);
 
   const query = queryToString(params.query);
   const body =

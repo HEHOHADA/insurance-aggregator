@@ -19,6 +19,10 @@ export const TravelCard: Component<TravelCardProps> = (props) => {
     .map(([card, value]) => {
       const key = capitalizedWord(card.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase());
 
+      if (key.toLowerCase() === "id") {
+        return;
+      }
+
       if (!value) {
         return;
       }

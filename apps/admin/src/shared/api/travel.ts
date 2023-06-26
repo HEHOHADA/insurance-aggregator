@@ -14,7 +14,7 @@ export const travelLoadFx = createEffect<
       country?: string;
       from?: number | string;
       to?: number | string;
-      approved?: boolean;
+      admin?: boolean;
     };
   },
   Travel[],
@@ -33,5 +33,6 @@ export const banTravelFx = createEffect<{ id: string }, void, void>(async ({ id 
   await requestInternalFx({
     path: `/travel/${id}/ban`,
     method: "POST",
+    body: {},
   });
 });

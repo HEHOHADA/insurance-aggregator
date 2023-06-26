@@ -35,10 +35,11 @@ export const TravelCard: Component<TravelCardProps> = (props) => {
   return (
     <Card
       name={props.travel.company.name}
+      id={props.travel.id}
       price={`${props.travel.price} RUB`}
       onClick={props.onBlock}
       link={props.travel.company.url}
-      blockButton
+      blockButton={!props.travel.approved}
       class={clsx(props.travel.approved ? "bg-rose-800" : "bg-bgLight")}
       color={props.travel.company.colorHexCode}
     >

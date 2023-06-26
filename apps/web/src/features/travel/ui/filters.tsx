@@ -11,7 +11,8 @@ export const Filters: Component = () => {
     <div class="px-4 py-6">
       <div class="flex gap-6">
         <CountryFilter />
-        <DateFilter />
+        <DateFilter key="from" />
+        <DateFilter key="to" />
       </div>
     </div>
   );
@@ -40,7 +41,7 @@ const CountryFilter = () => {
         onChange={(values) => {
           setField({
             key: "country",
-            value: values.value,
+            value: values?.value,
           });
         }}
         options={options}
@@ -50,7 +51,7 @@ const CountryFilter = () => {
   );
 };
 
-const DateFilter = () => {
+const DateFilter = (props: { key: string }) => {
   const fieldValue = useStoreMap({
     store: $form,
     keys: ["from"],
@@ -68,7 +69,7 @@ const DateFilter = () => {
         value={fieldValue()}
         onChange={(event) => {
           setField({
-            key: "from",
+            key: props.key,
             value: event.currentTarget.value,
           });
         }}

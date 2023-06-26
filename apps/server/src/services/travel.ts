@@ -18,7 +18,7 @@ export const travelRoutes: FastifyPluginCallback = (fastify, _, done) => {
       where: {
         destination: country ? { contains: country } : undefined,
         startDate: from ? { gte: dayjs(from).subtract(1, "s").toDate() } : undefined,
-        endDate: to ? { lte: new Date(to) } : undefined,
+        endDate: to ? { lte: dayjs(to).subtract(1, "s").toDate() } : undefined,
       },
       take: 30,
       include: {
@@ -26,7 +26,20 @@ export const travelRoutes: FastifyPluginCallback = (fastify, _, done) => {
         serviceProduct: true,
       },
     });
-    const arrayUniqueByKey = [...new Map(res.map((item) => [item.companyId, item])).values()];
+
+    const sorted = res.reduce((acc, item) => {
+      const foundItem = acc[item.companyId];
+
+      if (foundItem) {
+        acc[item.companyId] = foundItem.price >= item.price ? item : acc[item.companyId];
+      } else {
+        acc[item.companyId] = item;
+      }
+
+      return acc;
+    }, {} as Record<string | number, (typeof res)[number]>);
+
+    const arrayUniqueByKey = Object.values(sorted);
 
     if (admin) {
       return reply.code(200).send(arrayUniqueByKey);
